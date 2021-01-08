@@ -17,6 +17,7 @@
 		3D2EF61625A8CFBD0068890D /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2EF5FD25A8CFBD0068890D /* Persistence.swift */; };
 		3D2EF61725A8CFBD0068890D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D2EF5FE25A8CFBD0068890D /* Assets.xcassets */; };
 		3D2EF61825A8CFBD0068890D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D2EF5FE25A8CFBD0068890D /* Assets.xcassets */; };
+		3D2EF62525A8D05A0068890D /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2EF62425A8D05A0068890D /* Story.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		3D2EF60B25A8CFBD0068890D /* Hola.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hola.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D2EF60D25A8CFBD0068890D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3D2EF60E25A8CFBD0068890D /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
+		3D2EF62425A8D05A0068890D /* Story.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Story.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +55,7 @@
 		3D2EF5F325A8CFBC0068890D = {
 			isa = PBXGroup;
 			children = (
+				3D2EF62325A8D03E0068890D /* Model */,
 				3D2EF5F825A8CFBD0068890D /* Shared */,
 				3D2EF60525A8CFBD0068890D /* iOS */,
 				3D2EF60C25A8CFBD0068890D /* macOS */,
@@ -96,6 +99,14 @@
 				3D2EF60E25A8CFBD0068890D /* macOS.entitlements */,
 			);
 			path = macOS;
+			sourceTree = "<group>";
+		};
+		3D2EF62325A8D03E0068890D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3D2EF62425A8D05A0068890D /* Story.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -199,6 +210,7 @@
 				3D2EF61525A8CFBD0068890D /* Persistence.swift in Sources */,
 				3D2EF61125A8CFBD0068890D /* HolaApp.swift in Sources */,
 				3D2EF61325A8CFBD0068890D /* ContentView.swift in Sources */,
+				3D2EF62525A8D05A0068890D /* Story.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
