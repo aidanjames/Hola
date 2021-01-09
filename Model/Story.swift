@@ -7,13 +7,18 @@
 
 import Foundation
 
-struct Story {
+struct Story: Codable {
     var title: String
-    var story: [[String: String]]
+    var story: [Paragraph]
 }
 
-struct Paragraph {
-    
+struct Paragraph: Codable {
+    var translation: Translation
+}
+
+struct Translation: Codable {
+    var es: String
+    var en: String
 }
 
 /*

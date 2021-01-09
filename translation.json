@@ -1,0 +1,18 @@
+{
+   "greeting": [
+      {
+         "es":"Hola",
+         "en":"Hello"
+      },
+      {
+         "es":"Como estás",
+         "en":"How are you"
+      }
+   ],
+   "farewell": [
+      {
+         "es":"Adios",
+         "en":"Bye"
+      }
+   ]
+}
