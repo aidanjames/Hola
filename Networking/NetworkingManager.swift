@@ -16,7 +16,7 @@ class NetworkingManager {
     
     private init() {}
       
-    func fetchData(from urlString: String, completion: @escaping (Result<String, NetworkError>) -> Void) {
+    func fetchData(from urlString: String, completion: @escaping (Result<Data, NetworkError>) -> Void) {
         guard let url = URL(string: urlString) else {
             completion(.failure(.badURL))
             return
@@ -27,8 +27,10 @@ class NetworkingManager {
             DispatchQueue.main.async {
                 if let data = data {
                     // success: convert the data to a string and send it back
-                    let stringData = String(decoding: data, as: UTF8.self)
-                    completion(.success(stringData))
+//                    let stringData = String(decoding: data, as: UTF8.self)
+//                    completion(.success(stringData))
+                    print(data)
+                    completion(.success(data))
                 } else if error != nil {
                     // any sort of network failure
                     completion(.failure(.requestFailed))

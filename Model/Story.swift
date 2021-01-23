@@ -16,6 +16,10 @@ struct Paragraph: Codable {
     var translation: Translation
 }
 
+struct Response: Codable {
+    var response: Translation
+}
+
 struct Translation: Codable {
     var es: String
     var en: String
