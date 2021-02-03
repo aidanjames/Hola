@@ -19,7 +19,6 @@ struct ContentView: View {
             Text(en)
         }
         .onAppear {
-            
             NetworkingManager.shared.fetchData(from: "https://aidan-blog.herokuapp.com/random") { result in
                 print(result)
                 switch result {
