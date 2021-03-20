@@ -10,30 +10,45 @@ import CoreData
 
 struct ContentView: View {
     
-    @State private var es = "Loading..."
-    @State private var en = "Cargando..."
+    @State private var es = ""
+    @State private var en = "..."
     
     var body: some View {
         VStack {
-            Text(es)
+            Text("hola!")
+                .font(.largeTitle)
+            TextField("Spanish to translate", text: $es)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .padding()
             Text(en)
+            Button(action: { translateText() } ) {
+                Text("Translate")
+                    .foregroundColor(.white)
+                    .padding()
+                    .background(Color.blue)
+                    .cornerRadius(16)
+            }
+            .disabled(es.isEmpty)
         }
-        .onAppear {
-            NetworkingManager.shared.fetchData(from: "https://hola-ajp.herokuapp.com/translate?es=zapatos") { result in
-                print(result)
-                switch result {
-                case .success(let data):
-                    let decoder = JSONDecoder()
-                    do {
-                        let parsedResponse = try decoder.decode(Response.self, from: data)
-                        es = parsedResponse.response.es
-                        en = parsedResponse.response.en
-                    } catch {
-                        print("Failed to parse response. Error", error.localizedDescription)
-                    }
-                case .failure(let error):
-                    print(error.localizedDescription)
+    }
+    
+    func translateText() {
+        en = "Translating..."
+        let escapedString = es.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!.lowercased()
+        NetworkingManager.shared.fetchData(from: "https://hola-ajp.herokuapp.com/translate?es=\(escapedString)") { result in
+            print(result)
+            switch result {
+            case .success(let data):
+                let decoder = JSONDecoder()
+                do {
+                    let parsedResponse = try decoder.decode(Response.self, from: data)
+                    es = parsedResponse.response.es
+                    en = parsedResponse.response.en
+                } catch {
+                    print("Failed to parse response. Error", error.localizedDescription)
                 }
+            case .failure(let error):
+                print(error.localizedDescription)
             }
         }
     }
