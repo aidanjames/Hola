@@ -19,7 +19,7 @@ struct ContentView: View {
             Text(en)
         }
         .onAppear {
-            NetworkingManager.shared.fetchData(from: "https://aidan-blog.herokuapp.com/random") { result in
+            NetworkingManager.shared.fetchData(from: "https://hola-ajp.herokuapp.com/translate?es=zapatos") { result in
                 print(result)
                 switch result {
                 case .success(let data):

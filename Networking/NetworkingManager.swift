@@ -21,8 +21,12 @@ class NetworkingManager {
             completion(.failure(.badURL))
             return
         }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.setValue("7348e23e-84f2-11eb-be24-4a8f76545a8e", forHTTPHeaderField: "x-api-key")
 
-        URLSession.shared.dataTask(with: url) { data, response, error in
+        URLSession.shared.dataTask(with: request) { data, response, error in
             // the task has completed – push our work back to the main thread
             DispatchQueue.main.async {
                 if let data = data {
