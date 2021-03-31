@@ -7,37 +7,85 @@
 
 import Foundation
 
-struct Story: Codable {
-    var title: String
-    var story: [Paragraph]
-}
-
-struct Paragraph: Codable {
-    var translation: Translation
-}
-
-struct Response: Codable {
+struct TranslationResponse: Codable {
     var response: Translation
+    
+    struct Translation: Codable {
+        var es: String
+        var en: String
+    }
 }
 
-struct Translation: Codable {
-    var es: String
-    var en: String
+struct AllStoriesResponse: Codable {
+    var response: Stories
+    
+    struct Stories: Codable {
+        var stories: [Story]
+    }
 }
+
+struct Story: Codable, Identifiable {
+    var id: Int
+    var title: String
+}
+
+struct StoryResponse: Codable {
+    var response: Paragraphs
+}
+
+struct Paragraphs: Codable {
+    var paragraphs: [Paragraph]
+    var storyId: Int
+    var storyTitle: String
+}
+
+struct Paragraph: Codable, Identifiable {
+    var en: String
+    var es: String
+    var id: Int
+}
+
+
+
+
+
+
+
 
 /*
-
- { story_title: [
-        {
-            "es": "Hola",
-            "en": "Hello"
-        },
-        {
-            "es": "Zapatos",
-            "en": "Shoes"
-        }
-    ]
- }
  
+ {
+     "response": {
+         "stories": [
+             {
+                 "id": 1,
+                 "title": "Un poco tarde (A little late)"
+             },
+             {
+                 "id": 3,
+                 "title": "Las tres truchas (The three Trout)"
+             }
+         ]
+     }
+ }
+
+ {
+     "response": {
+         "paragraphs": [
+             {
+                 "en": "One day, I will be very strong.",
+                 "es": "Un día, seré muy fuerte.",
+                 "id": 1
+             },
+             {
+                 "en": "Yes sir.",
+                 "es": "Sí señor.",
+                 "id": 2
+             }
+         ],
+         "story_id": 1,
+         "story_title": "Un poco tarde (A little late)"
+     }
+ }
  
  */
