@@ -7,6 +7,9 @@
 
 import Foundation
 
+
+// TODO Refactor this file into separate files
+
 struct TranslationResponse: Codable {
     var response: Translation
     
@@ -37,6 +40,11 @@ struct Paragraphs: Codable {
     var paragraphs: [Paragraph]
     var storyId: Int
     var storyTitle: String
+}
+
+// Now conform to Identifiable
+extension Paragraphs: Identifiable {
+    var id: Int { return storyId }
 }
 
 struct Paragraph: Codable, Identifiable {

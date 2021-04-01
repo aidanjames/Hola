@@ -13,7 +13,7 @@ struct HolaApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            WrapperTabView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
