@@ -18,13 +18,14 @@ struct ParagraphTabView: View {
                     .font(.largeTitle)
                 ForEach(paragraphs.paragraphs) {
                     ParagraphView(paragraph: $0)
+                        .padding(.bottom, 50)
                 }
             }
             .tabViewStyle(PageTabViewStyle())
             .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
-            .padding(.horizontal)
             .navigationBarTitle(paragraphs.storyTitle, displayMode: .inline)
         }
+        .accentColor(Color(hex: "5f939a"))
     }
 }
 

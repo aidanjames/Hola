@@ -9,7 +9,7 @@ import SwiftUI
 
 struct StoriesListView: View {
     
-    @State private var isLoading = false
+    @State private var loadingText = ""
     @State private var stories = [Story]()
     @State private var selectedStory: Paragraphs? = nil
     
@@ -17,25 +17,25 @@ struct StoriesListView: View {
         NavigationView {
             Group {
                 if stories.isEmpty {
-                    Text("Fetching data...")
+                    Text(loadingText)
                 } else {
-                    VStack {
-                        List {
+                    ScrollView {
+                        LazyVStack {
                             ForEach(stories) { story in
+//                                TODO: Create a list view
                                 Button(story.title) {
                                     fetchStoryText(id: story.id)
                                 }
                                 .padding(.vertical)
                             }
-                        }
-                        .sheet(item: $selectedStory) { story in
-                            ParagraphTabView(paragraphs: story)
+                            .sheet(item: $selectedStory) { story in
+                                ParagraphTabView(paragraphs: story)
+                            }
                         }
                     }
                     
                 }
             }
-            .padding(.top)
             .navigationBarTitle("All Stories")
         }
         .onAppear {
@@ -49,7 +49,7 @@ struct StoriesListView: View {
     
     func fetchStories() {
         print("Calling fetchStories again...")
-        isLoading = true
+        loadingText = "Loading..."
         NetworkingManager.shared.fetchData(from: "https://hola-ajp.herokuapp.com/all-stories") { result in
             print(result)
             switch result {
@@ -59,20 +59,20 @@ struct StoriesListView: View {
                     let parsedResponse = try decoder.decode(AllStoriesResponse.self, from: data)
                     print(parsedResponse)
                     stories = parsedResponse.response.stories
-                    isLoading = false
+                    loadingText = ""
                 } catch {
                     print("Failed to parse response. Error", error.localizedDescription)
-                    isLoading = false
+                    loadingText = error.localizedDescription
                 }
             case .failure(let error):
                 print(error.localizedDescription)
-                isLoading = false
+                loadingText = error.localizedDescription
             }
         }
     }
     
     func fetchStoryText(id: Int) {
-        isLoading = true
+        loadingText = "Loading..."
         NetworkingManager.shared.fetchData(from: "https://hola-ajp.herokuapp.com/fetch-story?id=\(id)") { result in
             print(result)
             switch result {
@@ -83,14 +83,14 @@ struct StoriesListView: View {
                     let parsedResponse = try decoder.decode(StoryResponse.self, from: data)
                     print(parsedResponse)
                     selectedStory = parsedResponse.response
-                    isLoading = false
+                    loadingText = ""
                 } catch {
                     print("Failed to parse response. Error", error.localizedDescription)
-                    isLoading = false
+                    loadingText = error.localizedDescription
                 }
             case .failure(let error):
                 print(error.localizedDescription)
-                isLoading = false
+                loadingText = error.localizedDescription
             }
         }
     }
