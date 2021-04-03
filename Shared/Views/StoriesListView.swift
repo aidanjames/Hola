@@ -12,28 +12,32 @@ struct StoriesListView: View {
     @State private var loadingText = ""
     @State private var stories = [Story]()
     @State private var selectedStory: Paragraphs? = nil
+    @State private var showingProgressView = false
     
     var body: some View {
         NavigationView {
             Group {
                 if stories.isEmpty {
-                    Text(loadingText)
+                    ProgressView(loadingText)
                 } else {
-                    ScrollView {
-                        LazyVStack {
-                            ForEach(stories) { story in
-//                                TODO: Create a list view
-                                Button(story.title) {
-                                    fetchStoryText(id: story.id)
+                    if showingProgressView {
+                        ProgressView("Fetching story...")
+                    } else {
+                        ScrollView {
+                            LazyVStack {
+                                ForEach(stories) { story in
+                                    //                                TODO: Create a list view
+                                    Button(story.title) {
+                                        fetchStoryText(id: story.id)
+                                    }
+                                    .padding(.vertical)
                                 }
-                                .padding(.vertical)
-                            }
-                            .sheet(item: $selectedStory) { story in
-                                ParagraphTabView(paragraphs: story)
+                                .sheet(item: $selectedStory) { story in
+                                    ParagraphTabView(paragraphs: story)
+                                }
                             }
                         }
                     }
-                    
                 }
             }
             .navigationBarTitle("All Stories")
@@ -73,6 +77,7 @@ struct StoriesListView: View {
     
     func fetchStoryText(id: Int) {
         loadingText = "Loading..."
+        showingProgressView = true
         NetworkingManager.shared.fetchData(from: "https://hola-ajp.herokuapp.com/fetch-story?id=\(id)") { result in
             print(result)
             switch result {
@@ -84,6 +89,7 @@ struct StoriesListView: View {
                     print(parsedResponse)
                     selectedStory = parsedResponse.response
                     loadingText = ""
+                    showingProgressView = false
                 } catch {
                     print("Failed to parse response. Error", error.localizedDescription)
                     loadingText = error.localizedDescription
@@ -91,6 +97,7 @@ struct StoriesListView: View {
             case .failure(let error):
                 print(error.localizedDescription)
                 loadingText = error.localizedDescription
+                showingProgressView = false
             }
         }
     }
