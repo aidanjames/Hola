@@ -18,7 +18,11 @@ struct StoriesListView: View {
         NavigationView {
             Group {
                 if stories.isEmpty {
-                    ProgressView(loadingText)
+                    if showingProgressView {
+                        ProgressView(loadingText)
+                    } else {
+                        Text(loadingText)
+                    }
                 } else {
                     if showingProgressView {
                         ProgressView("Fetching story...")
@@ -53,6 +57,7 @@ struct StoriesListView: View {
     
     func fetchStories() {
         print("Calling fetchStories again...")
+        showingProgressView = true
         loadingText = "Loading..."
         NetworkingManager.shared.fetchData(from: "https://hola-ajp.herokuapp.com/all-stories") { result in
             print(result)
@@ -64,13 +69,16 @@ struct StoriesListView: View {
                     print(parsedResponse)
                     stories = parsedResponse.response.stories
                     loadingText = ""
+                    showingProgressView = false
                 } catch {
                     print("Failed to parse response. Error", error.localizedDescription)
                     loadingText = error.localizedDescription
+                    showingProgressView = false
                 }
             case .failure(let error):
                 print(error.localizedDescription)
                 loadingText = error.localizedDescription
+                showingProgressView = false
             }
         }
     }
