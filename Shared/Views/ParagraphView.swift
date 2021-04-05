@@ -14,13 +14,24 @@ struct ParagraphView: View {
     
     var body: some View {
         VStack {
-            Text(showingEs ? paragraph.es : paragraph.en)
-                .font(.title3)
-                .fontWeight(.light)
-                .padding()
-                .lineSpacing(10.0)
-//                .multilineTextAlignment(.center) 
-                .frame(maxWidth: .infinity, minHeight: 450, maxHeight: .infinity)
+            ScrollView {
+                ZStack {
+                    Text(paragraph.es)
+                        .font(.title3)
+                        .fontWeight(.light)
+                        .padding()
+                        .lineSpacing(10.0)
+                        .frame(maxWidth: .infinity, minHeight: 450, maxHeight: .infinity)
+                        .opacity(showingEs ? 1.0 : 0)
+                    Text(paragraph.en)
+                        .font(.title3)
+                        .fontWeight(.light)
+                        .padding()
+                        .lineSpacing(10.0)
+                        .frame(maxWidth: .infinity, minHeight: 450, maxHeight: .infinity)
+                        .opacity(!showingEs ? 1.0 : 0)
+                }
+            }
             Button(showingEs ? "View translation" : "Show original") {
                 withAnimation {
                     showingEs.toggle()
@@ -28,7 +39,6 @@ struct ParagraphView: View {
             }
         }
         .padding(.bottom, 30)
-//        .background(Color.secondary.opacity(0.1))
         .background(Color(hex: "eac8af").opacity(0.5))
         .cornerRadius(16)
         .padding()
