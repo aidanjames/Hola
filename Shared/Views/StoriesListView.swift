@@ -10,8 +10,8 @@ import SwiftUI
 struct StoriesListView: View {
     
     @State private var loadingText = ""
-    @State private var stories = [Story]()
-    @State private var selectedStory: Paragraphs? = nil
+    @State private var stories: [Story] = []
+    @State private var selectedStory: Story? = nil
     @State private var showingProgressView = false
     
     var body: some View {
@@ -21,7 +21,11 @@ struct StoriesListView: View {
                     if showingProgressView {
                         ProgressView(loadingText)
                     } else {
-                        Text(loadingText)
+                        VStack {
+                            Text(loadingText)
+                                .padding()
+                            Button("Try again") { fetchStories() }
+                        }
                     }
                 } else {
                     if showingProgressView {
@@ -30,14 +34,14 @@ struct StoriesListView: View {
                         ScrollView {
                             LazyVStack {
                                 ForEach(stories) { story in
-                                    //                                TODO: Create a list view
+                                    // TODO: Create a list view
                                     Button(story.title) {
-                                        fetchStoryText(id: story.id)
+                                        selectedStory = story
                                     }
                                     .padding(.vertical)
                                 }
                                 .sheet(item: $selectedStory) { story in
-                                    ParagraphTabView(paragraphs: story)
+                                    ParagraphTabView(story: story)
                                 }
                             }
                         }
@@ -74,33 +78,6 @@ struct StoriesListView: View {
                     print("Failed to parse response. Error", error.localizedDescription)
                     loadingText = error.localizedDescription
                     showingProgressView = false
-                }
-            case .failure(let error):
-                print(error.localizedDescription)
-                loadingText = error.localizedDescription
-                showingProgressView = false
-            }
-        }
-    }
-    
-    func fetchStoryText(id: Int) {
-        loadingText = "Loading..."
-        showingProgressView = true
-        NetworkingManager.shared.fetchData(from: "https://hola-ajp.herokuapp.com/fetch-story?id=\(id)") { result in
-            print(result)
-            switch result {
-            case .success(let data):
-                let decoder = JSONDecoder()
-                decoder.keyDecodingStrategy = .convertFromSnakeCase
-                do {
-                    let parsedResponse = try decoder.decode(StoryResponse.self, from: data)
-                    print(parsedResponse)
-                    selectedStory = parsedResponse.response
-                    loadingText = ""
-                    showingProgressView = false
-                } catch {
-                    print("Failed to parse response. Error", error.localizedDescription)
-                    loadingText = error.localizedDescription
                 }
             case .failure(let error):
                 print(error.localizedDescription)

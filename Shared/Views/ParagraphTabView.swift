@@ -9,23 +9,72 @@ import SwiftUI
 
 struct ParagraphTabView: View {
     
-    var paragraphs: Paragraphs
+    var story: Story
+    @State private var paragraphs: Paragraphs? = nil
+    @State private var loadingText = ""
+    @State private var showingProgressView = false
     
     var body: some View {
         NavigationView {
-            TabView {
-                Text(paragraphs.storyTitle)
-                    .font(.largeTitle)
-                ForEach(paragraphs.paragraphs) {
-                    ParagraphView(paragraph: $0)
-                        .padding(.bottom, 50)
+            if paragraphs != nil {
+                TabView {
+                    Text(story.title)
+                        .font(.largeTitle)
+                    ForEach(paragraphs!.paragraphs) {
+                        ParagraphView(paragraph: $0)
+                            .padding(.bottom, 50)
+                    }
+                }
+                .tabViewStyle(PageTabViewStyle())
+                .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
+                .navigationBarTitle(story.title, displayMode: .inline)
+            } else {
+                VStack {
+                    if showingProgressView {
+                        ProgressView(loadingText)
+                    } else {
+                        VStack {
+                            Text(loadingText)
+                                .padding()
+                            Button("Try again") { fetchStoryText() }
+                        }
+                    }
                 }
             }
-            .tabViewStyle(PageTabViewStyle())
-            .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
-            .navigationBarTitle(paragraphs.storyTitle, displayMode: .inline)
+            
         }
         .accentColor(Color(hex: "5f939a"))
+        .onAppear {
+            fetchStoryText()
+        }
+    }
+    
+    func fetchStoryText() {
+        loadingText = "Loading..."
+        showingProgressView = true
+        NetworkingManager.shared.fetchData(from: "https://hola-ajp.herokuapp.com/fetch-story?id=\(story.id)") { result in
+            print(result)
+            switch result {
+            case .success(let data):
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                do {
+                    let parsedResponse = try decoder.decode(StoryResponse.self, from: data)
+                    print(parsedResponse)
+                    paragraphs = parsedResponse.response
+                    loadingText = ""
+                    showingProgressView = false
+                } catch {
+                    print("Failed to parse response. Error", error.localizedDescription)
+                    loadingText = error.localizedDescription
+                    showingProgressView = false
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+                loadingText = error.localizedDescription
+                showingProgressView = false
+            }
+        }
     }
 }
 
@@ -35,6 +84,6 @@ struct ParagraphTabView_Previews: PreviewProvider {
         let paragraph2 = Paragraph(en: "I really like dogs.", es: "Me gustan mucho los perros.", id: 2)
         let paragraph3 = Paragraph(en: "My shoes are big.", es: "Mis zapatos son grandes.", id: 3)
         let paragraphs = Paragraphs(paragraphs: [paragraph1, paragraph2, paragraph3], storyId: 1, storyTitle: "Mi historia")
-        ParagraphTabView(paragraphs: paragraphs)
+        ParagraphTabView(story: Story(id: 1, title: "Mi historia"))
     }
 }
