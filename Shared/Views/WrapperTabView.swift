@@ -21,7 +21,10 @@ struct WrapperTabView: View {
                     Image(systemName: "arrow.left.arrow.right")
                 }
             
-
+            FlashCardsContainerView()
+                .tabItem {
+                    Image(systemName: "bolt.fill")
+                }
         }
     }
 }
