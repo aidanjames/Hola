@@ -8,13 +8,18 @@
 import SwiftUI
 
 struct FlashCardsContainerView: View {
+    
+    var flashCards: [FlashCard]
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ForEach(flashCards) { card in
+            FlashCardView(es: card.es, en: card.en)
+        }
     }
 }
 
 struct FlashCardsContainerView_Previews: PreviewProvider {
     static var previews: some View {
-        FlashCardsContainerView()
+        FlashCardsContainerView(flashCards: FlashCardsPreviewData.mockData)
     }
 }

@@ -21,7 +21,7 @@ struct WrapperTabView: View {
                     Image(systemName: "arrow.left.arrow.right")
                 }
             
-            FlashCardsContainerView()
+            FlashCardsContainerView(flashCards: FlashCardsPreviewData.mockData)
                 .tabItem {
                     Image(systemName: "bolt.fill")
                 }
