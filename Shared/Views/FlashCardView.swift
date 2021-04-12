@@ -13,7 +13,7 @@ struct FlashCardView: View {
     var en: String
     
     @State private var showingFront = true
-        
+    
     var body: some View {
         VStack {
             if showingFront {
@@ -26,6 +26,10 @@ struct FlashCardView: View {
             }
             .padding()
         }
+        .padding(50)
+        .background(Color(hex: "eac8af").opacity(0.5))
+        .background(Color.white)
+        .cornerRadius(16)
     }
 }
 

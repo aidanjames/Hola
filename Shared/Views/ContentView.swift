@@ -17,26 +17,29 @@ struct ContentView: View {
     var translateButtonDisabled: Bool { es.isEmpty || isFetchingTranslation }
     
     var body: some View {
-        VStack {
-            Text("hola!")
-                .font(.largeTitle)
-            TextField("Spanish to translate", text: $es)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .disableAutocorrection(true)
-                .multilineTextAlignment(TextAlignment.center)
-                .padding()
-                .padding(.horizontal, 25)
-            Text(en)
-                .bold()
-                .padding()
-            Button(action: { translateText() } ) {
-                Text("Translate")
-                    .foregroundColor(.white)
+        NavigationView {
+            VStack {
+                Text("hola!")
+                    .font(.largeTitle)
+                TextField("Spanish to translate", text: $es)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .disableAutocorrection(true)
+                    .multilineTextAlignment(TextAlignment.center)
                     .padding()
-                    .background(translateButtonDisabled ? Color.gray : Color.blue)
-                    .cornerRadius(16)
+                    .padding(.horizontal, 25)
+                Text(en)
+                    .bold()
+                    .padding()
+                Button(action: { translateText() } ) {
+                    Text("Translate")
+                        .foregroundColor(.white)
+                        .padding()
+                        .background(translateButtonDisabled ? Color.gray : Color.blue)
+                        .cornerRadius(16)
+                }
+                .disabled(translateButtonDisabled)
             }
-            .disabled(translateButtonDisabled)
+            .navigationBarTitle("Translator")
         }
         
     }

@@ -20,7 +20,8 @@ enum FlashCardsPreviewData {
     static var mockData: [FlashCard] {
         let cards = [
             FlashCard(es: "Zapato", en: "Shoe", lastCorrect: Date()),
-            FlashCard(es: "Verde", en: "Green", lastCorrect: Date())
+            FlashCard(es: "Verde", en: "Green", lastCorrect: Date()),
+            FlashCard(es: "Rojo", en: "Red", lastCorrect: Date())
         ]
         return cards
     }

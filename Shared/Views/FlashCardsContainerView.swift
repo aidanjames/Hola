@@ -9,12 +9,23 @@ import SwiftUI
 
 struct FlashCardsContainerView: View {
     
-    var flashCards: [FlashCard]
+    var flashCards: [FlashCard] = []
     
     var body: some View {
-        ForEach(flashCards) { card in
-            FlashCardView(es: card.es, en: card.en)
+        
+        NavigationView {
+            ZStack {
+                if flashCards.isEmpty {
+                    Text("No flash cards yet...")
+                } else {
+                    ForEach(flashCards) { card in
+                        FlashCardView(es: card.es, en: card.en)
+                    }
+                }
+            }
+            .navigationBarTitle("Flash cards")
         }
+
     }
 }
 

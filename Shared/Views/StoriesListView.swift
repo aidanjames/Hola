@@ -31,18 +31,16 @@ struct StoriesListView: View {
                     if showingProgressView {
                         ProgressView("Fetching story...")
                     } else {
-                        ScrollView {
-                            LazyVStack {
-                                ForEach(stories) { story in
-                                    // TODO: Create a list view
-                                    Button(story.title) {
-                                        selectedStory = story
-                                    }
-                                    .padding(.vertical)
+                        LazyVStack {
+                            ForEach(stories) { story in
+                                // TODO: Create a list view
+                                Button(story.title) {
+                                    selectedStory = story
                                 }
-                                .sheet(item: $selectedStory) { story in
-                                    ParagraphTabView(story: story)
-                                }
+                                .padding(.vertical)
+                            }
+                            .sheet(item: $selectedStory) { story in
+                                ParagraphTabView(story: story)
                             }
                         }
                     }
