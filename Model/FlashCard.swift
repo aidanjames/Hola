@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct FlashCard: Identifiable {
+struct FlashCard: Identifiable, Codable {
     var id = UUID().uuidString
     var es: String
     var en: String

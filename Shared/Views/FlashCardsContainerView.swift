@@ -9,7 +9,7 @@ import SwiftUI
 
 struct FlashCardsContainerView: View {
     
-    var flashCards: [FlashCard] = []
+    @State private var flashCards: [FlashCard] = []
     
     var body: some View {
         
@@ -24,6 +24,10 @@ struct FlashCardsContainerView: View {
                 }
             }
             .navigationBarTitle("Flash cards")
+            .onAppear {
+                let savedCards: [FlashCard] = FileManager.default.fetchData(from: "flashCards") ?? []
+                flashCards = savedCards
+            }
         }
 
     }
@@ -31,6 +35,6 @@ struct FlashCardsContainerView: View {
 
 struct FlashCardsContainerView_Previews: PreviewProvider {
     static var previews: some View {
-        FlashCardsContainerView(flashCards: FlashCardsPreviewData.mockData)
+        FlashCardsContainerView()
     }
 }

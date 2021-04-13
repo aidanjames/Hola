@@ -30,6 +30,14 @@ struct ContentView: View {
                 Text(en)
                     .bold()
                     .padding()
+                if !en.isEmpty {
+                    Button("Add flash card") {
+                        let newFlashCard = FlashCard(es: es, en: en, lastCorrect: Date())
+                        var allFlashCards: [FlashCard] = FileManager.default.fetchData(from: "flashCards") ?? []
+                        allFlashCards.append(newFlashCard)
+                        FileManager.default.writeData(allFlashCards, to: "flashCards")
+                    }
+                }
                 Button(action: { translateText() } ) {
                     Text("Translate")
                         .foregroundColor(.white)
