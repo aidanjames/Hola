@@ -20,25 +20,7 @@ struct FlashCardsContainerView: View {
                     Text("No flash cards yet...")
                 } else {
                     ForEach(flashCards) { card in
-                        FlashCardView(es: card.es, en: card.en)
-                            .rotationEffect(.degrees(Double(offset.width / 5)))
-                            .offset(x: offset.width * 5, y: 0)
-                            .opacity(2 - Double(abs(offset.width / 50)))
-                            .gesture(
-                                DragGesture()
-                                    .onChanged { gesture in
-                                        self.offset = gesture.translation
-                                    }
-
-                                    .onEnded { _ in
-                                        if abs(self.offset.width) > 100 {
-                                            // remove the card
-                                        } else {
-                                            self.offset = .zero
-                                        }
-                                    }
-                            )
-                        
+                        FlashCardView(es: card.es, en: card.en)                      
                     }
                 }
             }

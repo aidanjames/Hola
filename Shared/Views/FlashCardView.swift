@@ -13,6 +13,7 @@ struct FlashCardView: View {
     var en: String
     
     @State private var showingFront = true
+    @State private var offset = CGSize.zero
     
     var body: some View {
         VStack {
@@ -30,6 +31,23 @@ struct FlashCardView: View {
         .background(Color(hex: "eac8af").opacity(0.5))
         .background(Color.white)
         .cornerRadius(16)
+        .rotationEffect(.degrees(Double(offset.width / 5)))
+        .offset(x: offset.width * 5, y: 0)
+        .opacity(2 - Double(abs(offset.width / 50)))
+        .gesture(
+            DragGesture()
+                .onChanged { gesture in
+                    self.offset = gesture.translation
+                }
+
+                .onEnded { _ in
+                    if abs(self.offset.width) > 100 {
+                        // remove the card
+                    } else {
+                        self.offset = .zero
+                    }
+                }
+        )
     }
 }
 
