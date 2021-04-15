@@ -10,6 +10,8 @@ import SwiftUI
 struct FlashCardsContainerView: View {
     
     @State private var flashCards: [FlashCard] = []
+    @State private var incorrectGuesses: [FlashCard] = []
+    @State private var correctGuesses: [FlashCard] = []
     @State private var offset = CGSize.zero
     
     var body: some View {
@@ -19,6 +21,12 @@ struct FlashCardsContainerView: View {
                 if flashCards.isEmpty {
                     Text("No flash cards yet...")
                 } else {
+                    ForEach(correctGuesses) { card in
+                        FlashCardView(es: card.es, en: card.en)
+                    }
+                    ForEach(incorrectGuesses) { card in
+                        FlashCardView(es: card.es, en: card.en)
+                    }
                     ForEach(flashCards) { card in
                         FlashCardView(es: card.es, en: card.en)                      
                     }
