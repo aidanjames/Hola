@@ -32,6 +32,8 @@ struct FlashCardsContainerView: View {
                     }
                 }
             }
+            .padding(.horizontal, 50)
+            .padding(.vertical, 100)
             .navigationBarTitle("Flash cards")
             .onAppear {
                 let savedCards: [FlashCard] = FileManager.default.fetchData(from: "flashCards") ?? []

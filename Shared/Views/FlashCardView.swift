@@ -27,12 +27,12 @@ struct FlashCardView: View {
             }
             .padding()
         }
-        .padding(50)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color(hex: "eac8af").opacity(0.5))
         .background(Color.white)
         .cornerRadius(16)
         .rotationEffect(.degrees(Double(offset.width / 5)))
-        .offset(x: offset.width * 5, y: 0)
+        .offset(x: offset.width * 3, y: 0)
         .opacity(2 - Double(abs(offset.width / 50)))
         .gesture(
             DragGesture()
@@ -44,7 +44,9 @@ struct FlashCardView: View {
                     if abs(self.offset.width) > 100 {
                         // remove the card
                     } else {
-                        self.offset = .zero
+                        withAnimation {
+                            self.offset = .zero
+                        }
                     }
                 }
         )
