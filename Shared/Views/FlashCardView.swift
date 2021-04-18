@@ -38,28 +38,24 @@ struct FlashCardView: View {
         .opacity(2 - Double(abs(offset.width / 50)))
         .scaleEffect(scale)
         .gesture(
-            DragGesture()
+            DragGesture(minimumDistance: 0)
                 .onChanged { gesture in
+                    if scale == 1 {
+                        withAnimation { scale = 0.95 }
+                    }
                     self.offset = gesture.translation
                 }
                 .onEnded { _ in
                     if abs(self.offset.width) > 100 {
                         // TODO: remove the card
                     } else {
-                        withAnimation { self.offset = .zero }
-                        scale = 1
+                        withAnimation {
+                            self.offset = .zero
+                            scale = 1
+                        }
                     }
                 }
         )
-        .simultaneousGesture(
-            LongPressGesture(minimumDuration: 0)
-                .onEnded { _ in
-                    if scale == 1 {
-                        withAnimation { scale = 0.95 }
-                    }
-                }
-        )
-        
     }
 }
 
