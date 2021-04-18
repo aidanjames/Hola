@@ -20,6 +20,7 @@
 		3D2EF62525A8D05A0068890D /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2EF62425A8D05A0068890D /* Story.swift */; };
 		3D3177CD2620AEDB00619F67 /* FlashCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3177CC2620AEDB00619F67 /* FlashCardView.swift */; };
 		3D3177CE2620AEDB00619F67 /* FlashCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3177CC2620AEDB00619F67 /* FlashCardView.swift */; };
+		3D4715CE262C2CD9001084AB /* View+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4715CD262C2CD9001084AB /* View+Ext.swift */; };
 		3D6EEFDE2617627B00897B23 /* Color+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6EEFDD2617627B00897B23 /* Color+Ext.swift */; };
 		3D988C6E2625F77E0093F4B8 /* TempPersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D988C6D2625F77E0093F4B8 /* TempPersistenceManager.swift */; };
 		3D988C722625F7A80093F4B8 /* FileManager+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D988C712625F7A80093F4B8 /* FileManager+Ext.swift */; };
@@ -52,6 +53,7 @@
 		3D2EF60E25A8CFBD0068890D /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
 		3D2EF62425A8D05A0068890D /* Story.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Story.swift; sourceTree = "<group>"; };
 		3D3177CC2620AEDB00619F67 /* FlashCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardView.swift; sourceTree = "<group>"; };
+		3D4715CD262C2CD9001084AB /* View+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Ext.swift"; sourceTree = "<group>"; };
 		3D6EEFDD2617627B00897B23 /* Color+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Ext.swift"; sourceTree = "<group>"; };
 		3D988C6D2625F77E0093F4B8 /* TempPersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempPersistenceManager.swift; sourceTree = "<group>"; };
 		3D988C712625F7A80093F4B8 /* FileManager+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Ext.swift"; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 				3DD152F925A9A8DE001A7539 /* Bundle+Ext.swift */,
 				3D6EEFDD2617627B00897B23 /* Color+Ext.swift */,
 				3D988C712625F7A80093F4B8 /* FileManager+Ext.swift */,
+				3D4715CD262C2CD9001084AB /* View+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -286,6 +289,7 @@
 			files = (
 				3D2EF60F25A8CFBD0068890D /* Hola.xcdatamodeld in Sources */,
 				3D2EF61525A8CFBD0068890D /* Persistence.swift in Sources */,
+				3D4715CE262C2CD9001084AB /* View+Ext.swift in Sources */,
 				3D2EF61125A8CFBD0068890D /* HolaApp.swift in Sources */,
 				3DEE91F42616436F00351A09 /* ParagraphTabView.swift in Sources */,
 				3DEE920026164C7500351A09 /* StoriesListView.swift in Sources */,

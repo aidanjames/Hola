@@ -10,26 +10,16 @@ import SwiftUI
 struct FlashCardsContainerView: View {
     
     @State private var flashCards: [FlashCard] = []
-    @State private var incorrectGuesses: [FlashCard] = []
-    @State private var correctGuesses: [FlashCard] = []
     @State private var offset = CGSize.zero
     
     var body: some View {
         
         NavigationView {
             ZStack {
-                if flashCards.isEmpty {
-                    Text("No flash cards yet...")
-                } else {
-                    ForEach(correctGuesses) { card in
-                        FlashCardView(es: card.es, en: card.en)
-                    }
-                    ForEach(incorrectGuesses) { card in
-                        FlashCardView(es: card.es, en: card.en)
-                    }
-                    ForEach(flashCards) { card in
-                        FlashCardView(es: card.es, en: card.en)                      
-                    }
+                Text("No \(flashCards.isEmpty ? "" : "more") cards :(")
+                ForEach(0..<flashCards.count, id: \.self) { index in
+                    FlashCardView(es: flashCards[index].es, en: flashCards[index].en)
+                        .stacked(at: index, in: flashCards.count)
                 }
             }
             .padding(.horizontal, 50)
@@ -40,7 +30,7 @@ struct FlashCardsContainerView: View {
                 flashCards = savedCards.sorted(by: { $0.lastCorrect > $1.lastCorrect })
             }
         }
-
+        
     }
 }
 

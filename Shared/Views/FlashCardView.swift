@@ -33,6 +33,7 @@ struct FlashCardView: View {
         .background(Color(hex: "eac8af").opacity(0.5))
         .background(Color.white)
         .cornerRadius(16)
+        .shadow(color: Color.gray.opacity(0.5), radius: 5)
         .rotationEffect(.degrees(Double(offset.width / 5)))
         .offset(x: offset.width * 2, y: 0)
         .opacity(2 - Double(abs(offset.width / 50)))
