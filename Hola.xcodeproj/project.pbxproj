@@ -20,9 +20,9 @@
 		3D2EF62525A8D05A0068890D /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2EF62425A8D05A0068890D /* Story.swift */; };
 		3D3177CD2620AEDB00619F67 /* FlashCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3177CC2620AEDB00619F67 /* FlashCardView.swift */; };
 		3D3177CE2620AEDB00619F67 /* FlashCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3177CC2620AEDB00619F67 /* FlashCardView.swift */; };
+		3D3D8662262C805300944E81 /* FlashCardsContainerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3D8661262C805300944E81 /* FlashCardsContainerViewModel.swift */; };
 		3D4715CE262C2CD9001084AB /* View+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4715CD262C2CD9001084AB /* View+Ext.swift */; };
 		3D6EEFDE2617627B00897B23 /* Color+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6EEFDD2617627B00897B23 /* Color+Ext.swift */; };
-		3D988C6E2625F77E0093F4B8 /* TempPersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D988C6D2625F77E0093F4B8 /* TempPersistenceManager.swift */; };
 		3D988C722625F7A80093F4B8 /* FileManager+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D988C712625F7A80093F4B8 /* FileManager+Ext.swift */; };
 		3DA23AFE2621EB7800B3C95B /* FlashCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA23AFD2621EB7800B3C95B /* FlashCard.swift */; };
 		3DD152F125A9A588001A7539 /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD152F025A9A588001A7539 /* NetworkingManager.swift */; };
@@ -53,9 +53,9 @@
 		3D2EF60E25A8CFBD0068890D /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
 		3D2EF62425A8D05A0068890D /* Story.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Story.swift; sourceTree = "<group>"; };
 		3D3177CC2620AEDB00619F67 /* FlashCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardView.swift; sourceTree = "<group>"; };
+		3D3D8661262C805300944E81 /* FlashCardsContainerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardsContainerViewModel.swift; sourceTree = "<group>"; };
 		3D4715CD262C2CD9001084AB /* View+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Ext.swift"; sourceTree = "<group>"; };
 		3D6EEFDD2617627B00897B23 /* Color+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Ext.swift"; sourceTree = "<group>"; };
-		3D988C6D2625F77E0093F4B8 /* TempPersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempPersistenceManager.swift; sourceTree = "<group>"; };
 		3D988C712625F7A80093F4B8 /* FileManager+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Ext.swift"; sourceTree = "<group>"; };
 		3DA23AFD2621EB7800B3C95B /* FlashCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCard.swift; sourceTree = "<group>"; };
 		3DD152F025A9A588001A7539 /* NetworkingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
@@ -89,10 +89,8 @@
 		3D2EF5F325A8CFBC0068890D = {
 			isa = PBXGroup;
 			children = (
-				3D988C6C2625F7660093F4B8 /* Persistence */,
 				3DD152F825A9A8D2001A7539 /* Extensions */,
 				3DD152EF25A9A577001A7539 /* Networking */,
-				3D2EF62325A8D03E0068890D /* Model */,
 				3DD152F425A9A873001A7539 /* translation.json */,
 				3D2EF5F825A8CFBD0068890D /* Shared */,
 				3D2EF60525A8CFBD0068890D /* iOS */,
@@ -104,7 +102,7 @@
 		3D2EF5F825A8CFBD0068890D /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				3DEE91ED2616401800351A09 /* Views */,
+				3D2EF62325A8D03E0068890D /* Model */,
 				3D2EF5FB25A8CFBD0068890D /* HolaApp.swift */,
 				3D2EF5FD25A8CFBD0068890D /* Persistence.swift */,
 				3D2EF5FE25A8CFBD0068890D /* Assets.xcassets */,
@@ -125,6 +123,8 @@
 		3D2EF60525A8CFBD0068890D /* iOS */ = {
 			isa = PBXGroup;
 			children = (
+				3DEE91ED2616401800351A09 /* Views */,
+				3D3D865C262C7F9D00944E81 /* ViewModels */,
 				3D2EF60625A8CFBD0068890D /* Info.plist */,
 			);
 			path = iOS;
@@ -148,12 +148,12 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		3D988C6C2625F7660093F4B8 /* Persistence */ = {
+		3D3D865C262C7F9D00944E81 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				3D988C6D2625F77E0093F4B8 /* TempPersistenceManager.swift */,
+				3D3D8661262C805300944E81 /* FlashCardsContainerViewModel.swift */,
 			);
-			path = Persistence;
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		3DD152EF25A9A577001A7539 /* Networking */ = {
@@ -302,7 +302,7 @@
 				3D3177CD2620AEDB00619F67 /* FlashCardView.swift in Sources */,
 				3D6EEFDE2617627B00897B23 /* Color+Ext.swift in Sources */,
 				3D2EF62525A8D05A0068890D /* Story.swift in Sources */,
-				3D988C6E2625F77E0093F4B8 /* TempPersistenceManager.swift in Sources */,
+				3D3D8662262C805300944E81 /* FlashCardsContainerViewModel.swift in Sources */,
 				3DF56EA7261F700B00B1849E /* FlashCardsContainerView.swift in Sources */,
 				3DEE91EF2616402D00351A09 /* ParagraphView.swift in Sources */,
 			);

@@ -9,26 +9,22 @@ import SwiftUI
 
 struct FlashCardsContainerView: View {
     
-    @State private var flashCards: [FlashCard] = []
+    @ObservedObject var viewModel = FlashCardsContainerViewModel()   
     @State private var offset = CGSize.zero
     
     var body: some View {
         
         NavigationView {
             ZStack {
-                Text("No \(flashCards.isEmpty ? "" : "more") cards :(")
-                ForEach(0..<flashCards.count, id: \.self) { index in
-                    FlashCardView(es: flashCards[index].es, en: flashCards[index].en)
-                        .stacked(at: index, in: flashCards.count)
+                Text("No \(viewModel.sortedCards.isEmpty ? "" : "more") cards :(")
+                ForEach(0..<viewModel.sortedCards.count, id: \.self) { index in
+                    FlashCardView(flashCard: viewModel.sortedCards[index], viewModel: viewModel)
+                        .stacked(at: index, in: viewModel.sortedCards.count)
                 }
             }
             .padding(.horizontal, 50)
             .padding(.vertical, 100)
             .navigationBarTitle("Flash cards")
-            .onAppear {
-                let savedCards: [FlashCard] = FileManager.default.fetchData(from: "flashCards") ?? []
-                flashCards = savedCards.sorted(by: { $0.lastCorrect > $1.lastCorrect })
-            }
         }
         
     }

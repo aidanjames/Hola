@@ -14,9 +14,7 @@ struct FlashCard: Identifiable, Codable {
     var lastCorrect: Date
     var correctCount = 0
     var incorrectCount = 0
-}
-
-enum FlashCardsPreviewData {
+    
     static var mockData: [FlashCard] {
         let cards = [
             FlashCard(es: "Zapato", en: "Shoe", lastCorrect: Date()),
@@ -26,3 +24,4 @@ enum FlashCardsPreviewData {
         return cards
     }
 }
+

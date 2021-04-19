@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct FlashCardView: View {
+   
+    var flashCard: FlashCard
     
-    var es: String
-    var en: String
-    
+    @ObservedObject var viewModel: FlashCardsContainerViewModel
     @State private var showingFront = true
     @State private var offset = CGSize.zero
     @State private var scale: CGFloat = 1.0
@@ -19,9 +19,9 @@ struct FlashCardView: View {
     var body: some View {
         VStack {
             if showingFront {
-                Text(es)
+                Text(flashCard.es)
             } else {
-                Text(en)
+                Text(flashCard.en)
             }
             Button(showingFront ? "Show translation" : "Show original") {
                 showingFront.toggle()
@@ -49,6 +49,7 @@ struct FlashCardView: View {
                 .onEnded { _ in
                     if abs(self.offset.width) > 100 {
                         // TODO: remove the card
+                        viewModel.cardSwipedRight(flashCard.id)
                     } else {
                         withAnimation {
                             self.offset = .zero
@@ -62,6 +63,6 @@ struct FlashCardView: View {
 
 struct FlashCardView_Previews: PreviewProvider {
     static var previews: some View {
-        FlashCardView(es: "Zapatos", en: "Shoes")
+        FlashCardView(flashCard: FlashCard.mockData[0], viewModel: FlashCardsContainerViewModel())
     }
 }
