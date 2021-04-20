@@ -48,8 +48,11 @@ struct FlashCardView: View {
                 }
                 .onEnded { _ in
                     if abs(self.offset.width) > 100 {
-                        // TODO: remove the card
                         viewModel.cardSwipedRight(flashCard.id)
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                            scale = 1
+                            offset = CGSize.zero
+                        }
                     } else {
                         withAnimation {
                             self.offset = .zero

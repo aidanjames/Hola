@@ -15,7 +15,7 @@ class FlashCardsContainerViewModel: ObservableObject {
     }
     
     init() {
-        let savedCards: [FlashCard] = FileManager.default.fetchData(from: "flashCards") ?? []
+        guard let savedCards: [FlashCard] = FileManager.default.fetchData(from: "flashCards") else { return }
         cards = savedCards
     }
     
@@ -26,6 +26,10 @@ class FlashCardsContainerViewModel: ObservableObject {
     func cardSwipedRight(_ id: String) {
         if let index = cards.firstIndex(where: { $0.id == id} ) {
             cards[index].lastCorrect = Date()
+            
+            let element = cards.remove(at: index)
+            cards.insert(element, at: 0)
+            
             saveCards()
         }
     }
