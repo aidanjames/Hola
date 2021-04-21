@@ -16,22 +16,29 @@ struct FlashCardsContainerView: View {
     var body: some View {
         
         NavigationView {
-            ZStack {
-                Text("No \(viewModel.sortedCards.isEmpty ? "" : "more") cards :(")
-                ForEach(0..<viewModel.sortedCards.count, id: \.self) { index in
-                    VStack {
-                        Text("Index: \(index)")
-                            .background(Color.white)
+            VStack {
+                Button("Print stuff") { printCards() }.padding()
+                ZStack {
+                    Text("No \(viewModel.sortedCards.isEmpty ? "" : "more") cards :(")
+                    ForEach(0..<viewModel.sortedCards.count, id: \.self) { index in
                         FlashCardView(flashCard: viewModel.sortedCards[index], viewModel: viewModel)
                             .stacked(at: index, in: viewModel.sortedCards.count)
                     }
                 }
+                .padding(.horizontal, 50)
+                .padding(.vertical, 100)
+                .navigationBarTitle("Flash cards")
             }
-            .padding(.horizontal, 50)
-            .padding(.vertical, 100)
-            .navigationBarTitle("Flash cards")
+            .onAppear { viewModel.fetchCards() }
         }
         
+    }
+    
+    func printCards() {
+        print("---------------------------------")
+        for index in 0..<viewModel.cards.count {
+            print("Index: \(index) (\(viewModel.sortedCards[index].lastCorrect)) - es: \(viewModel.sortedCards[index].es) - en: \(viewModel.sortedCards[index].en)")
+        }
     }
 }
 

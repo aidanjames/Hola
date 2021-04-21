@@ -37,6 +37,7 @@ struct ContentView: View {
                         allFlashCards.append(newFlashCard)
                         FileManager.default.writeData(allFlashCards, to: "flashCards")
                     }
+                    .padding()
                 }
                 Button(action: { translateText() } ) {
                     Text("Translate")

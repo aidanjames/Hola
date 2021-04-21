@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct FlashCardView: View {
-   
+    
     var flashCard: FlashCard
     
     @ObservedObject var viewModel: FlashCardsContainerViewModel
@@ -25,6 +25,10 @@ struct FlashCardView: View {
             }
             Button(showingFront ? "Show translation" : "Show original") {
                 showingFront.toggle()
+            }
+            .padding()
+            Button("Delete card") {
+                viewModel.deleteCard(flashCard.id)
             }
             .padding()
         }
@@ -49,10 +53,8 @@ struct FlashCardView: View {
                 .onEnded { _ in
                     if abs(self.offset.width) > 100 {
                         viewModel.cardSwipedRight(flashCard.id)
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                            scale = 1
-                            offset = CGSize.zero
-                        }
+                        scale = 1
+                        offset = CGSize.zero
                     } else {
                         withAnimation {
                             self.offset = .zero

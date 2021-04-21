@@ -12,8 +12,7 @@ struct FlashCard: Identifiable, Codable {
     var es: String
     var en: String
     var lastCorrect: Date
-    var correctCount = 0
-    var incorrectCount = 0
+    var lastSwiped: Date = Date()
     
     static var mockData: [FlashCard] {
         let cards = [
