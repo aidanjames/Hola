@@ -37,7 +37,7 @@ struct FlashCardsContainerView: View {
     func printCards() {
         print("---------------------------------")
         for index in 0..<viewModel.cards.count {
-            print("Index: \(index) (\(viewModel.sortedCards[index].lastCorrect)) - es: \(viewModel.sortedCards[index].es) - en: \(viewModel.sortedCards[index].en)")
+            print("Index: \(index) (\(viewModel.sortedCards[index].lastCorrect)) : (\(viewModel.sortedCards[index].lastSwiped)) (\(viewModel.sortedCards[index].mostRecentSwipeWasCorrect))  - es: \(viewModel.sortedCards[index].es) - en: \(viewModel.sortedCards[index].en)")
         }
     }
 }

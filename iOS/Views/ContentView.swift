@@ -32,7 +32,7 @@ struct ContentView: View {
                     .padding()
                 if !en.isEmpty {
                     Button("Add flash card") {
-                        let newFlashCard = FlashCard(es: es, en: en, lastCorrect: Date())
+                        let newFlashCard = FlashCard(es: es, en: en)
                         var allFlashCards: [FlashCard] = FileManager.default.fetchData(from: "flashCards") ?? []
                         allFlashCards.append(newFlashCard)
                         FileManager.default.writeData(allFlashCards, to: "flashCards")

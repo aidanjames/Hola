@@ -18,6 +18,10 @@ struct FlashCardView: View {
     
     var body: some View {
         VStack {
+            Circle()
+                .frame(width: 10, height: 10)
+                .padding()
+                .foregroundColor(flashCard.mostRecentSwipeWasCorrect ? .green : .red)
             if showingFront {
                 Text(flashCard.es)
             } else {
@@ -51,8 +55,12 @@ struct FlashCardView: View {
                     self.offset = gesture.translation
                 }
                 .onEnded { _ in
-                    if abs(self.offset.width) > 100 {
+                    if offset.width > 100 {
                         viewModel.cardSwipedRight(flashCard.id)
+                        scale = 1
+                        offset = CGSize.zero
+                    } else if offset.width < -100 {
+                        viewModel.cardSwipedLeft(flashCard.id)
                         scale = 1
                         offset = CGSize.zero
                     } else {

@@ -11,12 +11,18 @@ class FlashCardsContainerViewModel: ObservableObject {
     @Published var cards: [FlashCard] = []
     
     var sortedCards: [FlashCard] {
-        cards.sorted(by: { $0.lastCorrect > $1.lastCorrect })
+        let wrongCards = cards.filter { !$0.mostRecentSwipeWasCorrect }
+        let wrongCardsSorted = wrongCards.sorted(by: { $0.lastSwiped > $1.lastSwiped })
+        let correctCards = cards.filter { $0.mostRecentSwipeWasCorrect }
+        let correctCardsSorted = correctCards.sorted(by: { $0.lastSwiped > $1.lastSwiped })
+        return correctCardsSorted + wrongCardsSorted
+//        return cards.sorted(by: { $0.lastCorrect > $1.lastCorrect })
     }
     
     init() { fetchCards() }
     
     
+    // Incorrect
     func cardSwipedLeft(_ id: String) {
         if let index = cards.firstIndex(where: { $0.id == id} ) {
             cards[index].lastSwiped = Date()
@@ -29,10 +35,12 @@ class FlashCardsContainerViewModel: ObservableObject {
     }
     
     
+    // Correct
     func cardSwipedRight(_ id: String) {
         if let index = cards.firstIndex(where: { $0.id == id} ) {
-            cards[index].lastCorrect = Date()
-            cards[index].lastSwiped = Date()
+            let now = Date()
+            cards[index].lastCorrect = now
+            cards[index].lastSwiped = now
             
             let element = cards.remove(at: index)
             cards.insert(element, at: 0)
