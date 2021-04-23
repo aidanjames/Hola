@@ -9,6 +9,7 @@ import SwiftUI
 
 class FlashCardsContainerViewModel: ObservableObject {
     @Published var cards: [FlashCard] = []
+    var endCardId: String = ""
     
     var sortedCards: [FlashCard] {
         let wrongCards = cards.filter { !$0.mostRecentSwipeWasCorrect }
@@ -16,7 +17,6 @@ class FlashCardsContainerViewModel: ObservableObject {
         let correctCards = cards.filter { $0.mostRecentSwipeWasCorrect }
         let correctCardsSorted = correctCards.sorted(by: { $0.lastSwiped > $1.lastSwiped })
         return correctCardsSorted + wrongCardsSorted
-//        return cards.sorted(by: { $0.lastCorrect > $1.lastCorrect })
     }
     
     init() { fetchCards() }
@@ -62,10 +62,17 @@ class FlashCardsContainerViewModel: ObservableObject {
     func fetchCards() {
         guard let savedCards: [FlashCard] = FileManager.default.fetchData(from: "flashCards") else { return }
         cards = savedCards
+        let endCard = FlashCard(es: "End", en: "End")
+        endCardId = endCard.id
+        cards[0] = endCard
     }
     
     
     private func saveCards() {
+//        var cardsToSave = cards
+//        if let index = cards.firstIndex(where: { $0.id == endCardId }) {
+//            cardsToSave.remove(at: index)
+//        }
         FileManager.default.writeData(cards, to: "flashCards")
     }
     
