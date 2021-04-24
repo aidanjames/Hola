@@ -12,11 +12,7 @@ class FlashCardsContainerViewModel: ObservableObject {
     var endCardId: String = ""
     
     var sortedCards: [FlashCard] {
-        let wrongCards = cards.filter { !$0.mostRecentSwipeWasCorrect }
-        let wrongCardsSorted = wrongCards.sorted(by: { $0.lastSwiped > $1.lastSwiped })
-        let correctCards = cards.filter { $0.mostRecentSwipeWasCorrect }
-        let correctCardsSorted = correctCards.sorted(by: { $0.lastSwiped > $1.lastSwiped })
-        return correctCardsSorted + wrongCardsSorted
+        return cards.filter { $0.nextDue < Date() }.sorted(by: { $0.nextDue > $1.nextDue } )
     }
     
     init() { fetchCards() }
@@ -25,10 +21,9 @@ class FlashCardsContainerViewModel: ObservableObject {
     // Incorrect
     func cardSwipedLeft(_ id: String) {
         if let index = cards.firstIndex(where: { $0.id == id} ) {
-            cards[index].lastSwiped = Date()
-            // Find the index of cards that were swiped today and put it behind that one
-            let element = cards.remove(at: index)
-            cards.insert(element, at: 0)
+            let now = Date()
+            cards[index].lastSwiped = now
+            cards[index].nextDue = now.addOneHour()
             
             saveCards()
         }
@@ -41,9 +36,7 @@ class FlashCardsContainerViewModel: ObservableObject {
             let now = Date()
             cards[index].lastCorrect = now
             cards[index].lastSwiped = now
-            
-            let element = cards.remove(at: index)
-            cards.insert(element, at: 0)
+            cards[index].nextDue = now.tomorrow()
             
             saveCards()
         }
@@ -62,9 +55,7 @@ class FlashCardsContainerViewModel: ObservableObject {
     func fetchCards() {
         guard let savedCards: [FlashCard] = FileManager.default.fetchData(from: "flashCards") else { return }
         cards = savedCards
-        let endCard = FlashCard(es: "End", en: "End")
-        endCardId = endCard.id
-        cards[0] = endCard
+
     }
     
     

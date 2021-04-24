@@ -13,6 +13,7 @@ struct FlashCard: Identifiable, Codable {
     var en: String
     var lastCorrect: Date = Date()
     var lastSwiped: Date = Date()
+    var nextDue: Date = Date()
     
     var mostRecentSwipeWasCorrect: Bool { lastCorrect == lastSwiped }
     
