@@ -19,7 +19,12 @@ struct FlashCardsContainerView: View {
             VStack {
                 Button("Print stuff") { printCards() }.padding()
                 ZStack {
-                    Text("No \(viewModel.sortedCards.isEmpty ? "" : "more") cards :(")
+                    VStack {
+                        Text("No \(viewModel.sortedCards.isEmpty ? "flash cards, sorry." : "more cards today :(")")
+                        Button("Reload") {
+                            viewModel.reloadCards()
+                        }
+                    }
                     ForEach(0..<viewModel.sortedCards.count, id: \.self) { index in
                         FlashCardView(flashCard: viewModel.sortedCards[index], viewModel: viewModel)
                             .stacked(at: index, in: viewModel.sortedCards.count)

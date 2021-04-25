@@ -52,6 +52,11 @@ class FlashCardsContainerViewModel: ObservableObject {
     }
     
     
+    func reloadCards() {
+        // TODO - Change the next due date on the cards so that they will all be presented again today.
+    }
+    
+    
     func fetchCards() {
         guard let savedCards: [FlashCard] = FileManager.default.fetchData(from: "flashCards") else { return }
         cards = savedCards
