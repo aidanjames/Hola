@@ -18,6 +18,6 @@ extension Date {
     }
     
     
-    func addOneHour() -> Date { return self.addingTimeInterval(5) }
+    func add(seconds: Double = 5) -> Date { return self.addingTimeInterval(seconds) }
     
 }

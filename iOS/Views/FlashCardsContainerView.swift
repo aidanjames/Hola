@@ -17,12 +17,15 @@ struct FlashCardsContainerView: View {
         
         NavigationView {
             VStack {
-                Button("Print stuff") { printCards() }.padding()
+//                Button("Print stuff") { printCards() }.padding(.top)
                 ZStack {
                     VStack {
-                        Text("No \(viewModel.sortedCards.isEmpty ? "flash cards, sorry." : "more cards today :(")")
-                        Button("Reload") {
-                            viewModel.reloadCards()
+                        Text("No \(viewModel.cards.isEmpty ? "flash cards, sorry." : "more cards today :(")")
+                        if !viewModel.cards.isEmpty {
+                            Button("Reload") {
+                                viewModel.reloadCards()
+                            }
+                            .padding()
                         }
                     }
                     ForEach(0..<viewModel.sortedCards.count, id: \.self) { index in
@@ -42,7 +45,7 @@ struct FlashCardsContainerView: View {
     func printCards() {
         print("---------------------------------")
         for index in 0..<viewModel.cards.count {
-            print("Index: \(index) (\(viewModel.sortedCards[index].lastCorrect)) : (\(viewModel.sortedCards[index].lastSwiped)) (\(viewModel.sortedCards[index].mostRecentSwipeWasCorrect))  - es: \(viewModel.sortedCards[index].es) - en: \(viewModel.sortedCards[index].en)")
+            print("Index: \(index) (\(viewModel.cards[index].nextDue)) : (\(viewModel.cards[index].lastSwiped)) (\(viewModel.cards[index].mostRecentSwipeWasCorrect))  - es: \(viewModel.cards[index].es) - en: \(viewModel.cards[index].en)")
         }
     }
 }

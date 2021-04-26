@@ -23,7 +23,7 @@ class FlashCardsContainerViewModel: ObservableObject {
         if let index = cards.firstIndex(where: { $0.id == id} ) {
             let now = Date()
             cards[index].lastSwiped = now
-            cards[index].nextDue = now.addOneHour()
+            cards[index].nextDue = now.add(seconds: sortedCards.count == 1 ? 0 : 1)
             
             saveCards()
         }
@@ -47,13 +47,15 @@ class FlashCardsContainerViewModel: ObservableObject {
         if let index = cards.firstIndex(where: { $0.id == id} ) {
             cards.remove(at: index)
         }
-        
         saveCards()
     }
     
     
     func reloadCards() {
-        // TODO - Change the next due date on the cards so that they will all be presented again today.
+        for i in 0..<cards.count {
+            cards[i].nextDue = cards[i].nextDue.addingTimeInterval(-86400)
+        }
+        saveCards()
     }
     
     
@@ -65,10 +67,6 @@ class FlashCardsContainerViewModel: ObservableObject {
     
     
     private func saveCards() {
-//        var cardsToSave = cards
-//        if let index = cards.firstIndex(where: { $0.id == endCardId }) {
-//            cardsToSave.remove(at: index)
-//        }
         FileManager.default.writeData(cards, to: "flashCards")
     }
     

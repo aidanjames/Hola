@@ -31,10 +31,11 @@ struct FlashCardView: View {
                 showingFront.toggle()
             }
             .padding()
-            Button("Delete card") {
-                viewModel.deleteCard(flashCard.id)
+            Button(action: { viewModel.deleteCard(flashCard.id) } ) {
+                Image(systemName: "trash")
+                    .foregroundColor(.red)
             }
-            .padding()
+            .padding(.top, 50)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(RoundedRectangle(cornerRadius: 16).stroke(Color.gray, lineWidth: 1))
