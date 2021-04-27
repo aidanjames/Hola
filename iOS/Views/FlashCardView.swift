@@ -39,8 +39,6 @@ struct FlashCardView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(RoundedRectangle(cornerRadius: 16).stroke(Color.gray, lineWidth: 1))
-        .background(Color(hex: "eac8af").opacity(0.5))
-        .background(Color.white)
         .cornerRadius(16)
         .shadow(color: Color.gray.opacity(0.5), radius: 5)
         .rotationEffect(.degrees(Double(offset.width / 5)))

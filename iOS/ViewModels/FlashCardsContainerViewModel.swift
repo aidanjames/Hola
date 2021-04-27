@@ -51,6 +51,7 @@ class FlashCardsContainerViewModel: ObservableObject {
     }
     
     
+    // If the user has run out of flash cards and wants to start again.
     func reloadCards() {
         for i in 0..<cards.count {
             cards[i].nextDue = cards[i].nextDue.addingTimeInterval(-86400)
