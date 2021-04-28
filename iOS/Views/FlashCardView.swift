@@ -24,11 +24,17 @@ struct FlashCardView: View {
                 .foregroundColor(flashCard.mostRecentSwipeWasCorrect ? .green : .red)
             if showingFront {
                 Text(flashCard.es)
+                    .font(.largeTitle)
             } else {
                 Text(flashCard.en)
+                    .font(.largeTitle)
             }
-            Button(showingFront ? "Show translation" : "Show original") {
-                showingFront.toggle()
+            Button(action: { showingFront.toggle() }) {
+                Text(showingFront ? "Show translation" : "Show original")
+                    .foregroundColor(.white)
+                    .padding()
+                    .background(Color.blue)
+                    .cornerRadius(16)
             }
             .padding()
             Button(action: { viewModel.deleteCard(flashCard.id) } ) {
