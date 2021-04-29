@@ -25,12 +25,14 @@ struct FlashCardView: View {
             if showingFront {
                 Text(flashCard.es)
                     .font(.largeTitle)
+                    .foregroundColor(.black)
             } else {
                 Text(flashCard.en)
                     .font(.largeTitle)
+                    .foregroundColor(.black)
             }
             Button(action: { showingFront.toggle() }) {
-                Text(showingFront ? "Show translation" : "Show original")
+                Text(showingFront ? "Translate" : "Show original")
                     .foregroundColor(.white)
                     .padding()
                     .background(Color.blue)
@@ -44,6 +46,7 @@ struct FlashCardView: View {
             .padding(.top, 50)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color.white)
         .background(RoundedRectangle(cornerRadius: 16).stroke(Color.gray, lineWidth: 1))
         .cornerRadius(16)
         .shadow(color: Color.gray.opacity(0.5), radius: 5)
