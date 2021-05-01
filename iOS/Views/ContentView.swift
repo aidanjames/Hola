@@ -36,6 +36,8 @@ struct ContentView: View {
                         var allFlashCards: [FlashCard] = FileManager.default.fetchData(from: "flashCards") ?? []
                         allFlashCards.append(newFlashCard)
                         FileManager.default.writeData(allFlashCards, to: "flashCards")
+                        es = ""
+                        en = ""
                     }
                     .padding()
                 }

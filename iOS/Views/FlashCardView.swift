@@ -37,6 +37,7 @@ struct FlashCardView: View {
                     .padding()
                     .background(Color.blue)
                     .cornerRadius(16)
+                    .padding(.top, 100)
             }
             .padding()
             Button(action: { viewModel.deleteCard(flashCard.id) } ) {
