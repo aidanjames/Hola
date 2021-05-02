@@ -30,7 +30,7 @@ struct ContentView: View {
                 Text(en)
                     .bold()
                     .padding()
-                if !en.isEmpty {
+                if !en.isEmpty && !isFetchingTranslation {
                     Button("Add flash card") {
                         let newFlashCard = FlashCard(es: es, en: en)
                         var allFlashCards: [FlashCard] = FileManager.default.fetchData(from: "flashCards") ?? []
