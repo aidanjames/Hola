@@ -26,10 +26,12 @@ struct FlashCardView: View {
                 Text(flashCard.es)
                     .font(.largeTitle)
                     .foregroundColor(.black)
+                    .padding(.bottom, 100)
             } else {
                 Text(flashCard.en)
                     .font(.largeTitle)
                     .foregroundColor(.black)
+                    .padding(.bottom, 100)
             }
             Button(action: { showingFront.toggle() }) {
                 Text(showingFront ? "Translate" : "Show original")
@@ -37,7 +39,6 @@ struct FlashCardView: View {
                     .padding()
                     .background(Color.blue)
                     .cornerRadius(16)
-                    .padding(.top, 100)
             }
             .padding()
             Button(action: { viewModel.deleteCard(flashCard.id) } ) {
