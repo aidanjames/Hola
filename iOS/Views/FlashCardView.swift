@@ -16,6 +16,8 @@ struct FlashCardView: View {
     @State private var offset = CGSize.zero
     @State private var scale: CGFloat = 1.0
     
+    @Environment(\.colorScheme) var colorScheme
+    
     var body: some View {
         VStack {
             Circle()
@@ -25,12 +27,10 @@ struct FlashCardView: View {
             if showingFront {
                 Text(flashCard.es)
                     .font(.largeTitle)
-                    .foregroundColor(.black)
                     .padding(.bottom, 100)
             } else {
                 Text(flashCard.en)
                     .font(.largeTitle)
-                    .foregroundColor(.black)
                     .padding(.bottom, 100)
             }
             Button(action: { showingFront.toggle() }) {
@@ -48,7 +48,7 @@ struct FlashCardView: View {
             .padding(.top, 50)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color.white)
+        .background(colorScheme == .light ? Color.white : Color.black)
         .background(RoundedRectangle(cornerRadius: 16).stroke(Color.gray, lineWidth: 1))
         .cornerRadius(16)
         .shadow(color: Color.gray.opacity(0.5), radius: 5)
