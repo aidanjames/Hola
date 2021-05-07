@@ -12,35 +12,32 @@ struct FlashCardView: View {
     var flashCard: FlashCard
     
     @ObservedObject var viewModel: FlashCardsContainerViewModel
-    @State private var showingFront = true
+//    @State private var showingFront = true
     @State private var offset = CGSize.zero
     @State private var scale: CGFloat = 1.0
+    @Binding var showingSpanish: Bool
     
     @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         VStack {
-            Circle()
-                .frame(width: 10, height: 10)
-                .padding()
-                .foregroundColor(flashCard.mostRecentSwipeWasCorrect ? .green : .red)
-            if showingFront {
-                Text(flashCard.es)
+//            if showingFront {
+                Text(showingSpanish ? flashCard.es : flashCard.en)
                     .font(.largeTitle)
                     .padding(.bottom, 100)
-            } else {
-                Text(flashCard.en)
-                    .font(.largeTitle)
-                    .padding(.bottom, 100)
-            }
-            Button(action: { showingFront.toggle() }) {
-                Text(showingFront ? "Translate" : "Show original")
-                    .foregroundColor(.white)
-                    .padding()
-                    .background(Color.blue)
-                    .cornerRadius(16)
-            }
-            .padding()
+//            } else {
+//                Text(flashCard.en)
+//                    .font(.largeTitle)
+//                    .padding(.bottom, 100)
+//            }
+//            Button(action: { showingSpanish.toggle() }) {
+//                Text( ? "Translate" : "Show original")
+//                    .foregroundColor(.white)
+//                    .padding()
+//                    .background(Color.blue)
+//                    .cornerRadius(16)
+//            }
+//            .padding()
             Button(action: { viewModel.deleteCard(flashCard.id) } ) {
                 Image(systemName: "trash")
                     .foregroundColor(.red)
@@ -85,6 +82,6 @@ struct FlashCardView: View {
 
 struct FlashCardView_Previews: PreviewProvider {
     static var previews: some View {
-        FlashCardView(flashCard: FlashCard.mockData[0], viewModel: FlashCardsContainerViewModel())
+        FlashCardView(flashCard: FlashCard.mockData[0], viewModel: FlashCardsContainerViewModel(), showingSpanish: .constant(true))
     }
 }
