@@ -12,13 +12,24 @@ struct FlashCardsContainerView: View {
     @ObservedObject var viewModel = FlashCardsContainerViewModel()   
     @State private var offset = CGSize.zero
     @State private var currentIndex = 0
-    @State private var showingSpanish = true
+    @State private var language = "Español"
+    
+    var showingSpanish: Bool { language == "Español" }
+    var languages = ["Español", "English"]
     
     var body: some View {
         
         NavigationView {
             VStack {
-                Button(showingSpanish ? "Español" : "English") { showingSpanish.toggle() }.padding(.top)
+                if !viewModel.sortedCards.isEmpty {
+                    Picker(selection: $language, label: Text("Language")) {
+                        ForEach(languages, id: \.self) {
+                            Text($0)
+                        }
+                    }
+                    .pickerStyle(SegmentedPickerStyle())
+                    .padding()
+                }
                 ZStack {
                     VStack {
                         Text("No \(viewModel.cards.isEmpty ? "flash cards, sorry." : "more cards today :(")")
@@ -30,7 +41,7 @@ struct FlashCardsContainerView: View {
                         }
                     }
                     ForEach(0..<viewModel.sortedCards.count, id: \.self) { index in
-                        FlashCardView(flashCard: viewModel.sortedCards[index], viewModel: viewModel, showingSpanish: $showingSpanish)
+                        FlashCardView(flashCard: viewModel.sortedCards[index], viewModel: viewModel, showingSpanish: showingSpanish)
                             .stacked(at: index, in: viewModel.sortedCards.count)
                     }
                 }

@@ -15,7 +15,7 @@ struct FlashCardView: View {
 //    @State private var showingFront = true
     @State private var offset = CGSize.zero
     @State private var scale: CGFloat = 1.0
-    @Binding var showingSpanish: Bool
+    var showingSpanish: Bool
     
     @Environment(\.colorScheme) var colorScheme
     
@@ -82,6 +82,6 @@ struct FlashCardView: View {
 
 struct FlashCardView_Previews: PreviewProvider {
     static var previews: some View {
-        FlashCardView(flashCard: FlashCard.mockData[0], viewModel: FlashCardsContainerViewModel(), showingSpanish: .constant(true))
+        FlashCardView(flashCard: FlashCard.mockData[0], viewModel: FlashCardsContainerViewModel(), showingSpanish: true)
     }
 }
