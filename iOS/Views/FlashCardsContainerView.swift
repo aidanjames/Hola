@@ -28,7 +28,8 @@ struct FlashCardsContainerView: View {
                         }
                     }
                     .pickerStyle(SegmentedPickerStyle())
-                    .padding()
+                    .padding(.horizontal, 30)
+                    .padding(.vertical)
                 }
                 ZStack {
                     VStack {
@@ -46,7 +47,7 @@ struct FlashCardsContainerView: View {
                     }
                 }
                 .padding(.horizontal, 50)
-                .padding(.vertical, 100)
+                .padding(.bottom, 100)
                 .navigationBarTitle("Flash cards")
             }
             .onAppear { viewModel.fetchCards() }
