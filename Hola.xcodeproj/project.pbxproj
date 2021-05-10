@@ -39,6 +39,8 @@
 		3DEE920126164C7500351A09 /* StoriesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEE91FF26164C7500351A09 /* StoriesListView.swift */; };
 		3DF56EA7261F700B00B1849E /* FlashCardsContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF56EA6261F700B00B1849E /* FlashCardsContainerView.swift */; };
 		3DF56EA8261F700B00B1849E /* FlashCardsContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF56EA6261F700B00B1849E /* FlashCardsContainerView.swift */; };
+		3DFCEAEE2649A3890045C6F2 /* DayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFCEAED2649A3890045C6F2 /* DayView.swift */; };
+		3DFCEAEF2649A3890045C6F2 /* DayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFCEAED2649A3890045C6F2 /* DayView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +70,7 @@
 		3DEE91FA26164BE500351A09 /* WrapperTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrapperTabView.swift; sourceTree = "<group>"; };
 		3DEE91FF26164C7500351A09 /* StoriesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesListView.swift; sourceTree = "<group>"; };
 		3DF56EA6261F700B00B1849E /* FlashCardsContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardsContainerView.swift; sourceTree = "<group>"; };
+		3DFCEAED2649A3890045C6F2 /* DayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,6 +191,7 @@
 				3DEE91FF26164C7500351A09 /* StoriesListView.swift */,
 				3DF56EA6261F700B00B1849E /* FlashCardsContainerView.swift */,
 				3D3177CC2620AEDB00619F67 /* FlashCardView.swift */,
+				3DFCEAED2649A3890045C6F2 /* DayView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -291,6 +295,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D2EF60F25A8CFBD0068890D /* Hola.xcdatamodeld in Sources */,
+				3DFCEAEE2649A3890045C6F2 /* DayView.swift in Sources */,
 				3D2EF61525A8CFBD0068890D /* Persistence.swift in Sources */,
 				3D4715CE262C2CD9001084AB /* View+Ext.swift in Sources */,
 				3D2EF61125A8CFBD0068890D /* HolaApp.swift in Sources */,
@@ -317,6 +322,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3DEE920126164C7500351A09 /* StoriesListView.swift in Sources */,
+				3DFCEAEF2649A3890045C6F2 /* DayView.swift in Sources */,
 				3DEE91F02616402D00351A09 /* ParagraphView.swift in Sources */,
 				3DF56EA8261F700B00B1849E /* FlashCardsContainerView.swift in Sources */,
 				3D3177CE2620AEDB00619F67 /* FlashCardView.swift in Sources */,
