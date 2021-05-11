@@ -8,30 +8,46 @@
 import SwiftUI
 
 struct DayView: View {
-      
+    
     var body: some View {
-        ScrollView {
-            HStack {
-                VStack {
-                    ForEach(0..<24) { hour in
+        NavigationView {
+            VStack {
+                
+                ScrollView {
+                    HStack {
                         VStack {
-                            Text("\(hour):00 \(hour < 12 ? "am" : "pm")")
-                            Text("|")
-                            Text("|")
+                            ForEach(0..<24) { hour in
+                                VStack {
+                                    Text("\(hour):00 \(hour < 12 ? "am" : "pm")")
+                                    Text("|")
+                                    Text("|")
+                                }
+                                .padding(.leading)
+                            }
                         }
-                        .padding(.leading)
+                        Spacer()
                     }
+                    .navigationBarItems(
+                        leading: Text("Timeline").font(.largeTitle).bold().padding(.top),
+                        trailing:
+                            Button(action: {}) {
+                                Image("ajp")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 50, height: 50)
+                                    .cornerRadius(25)
+                            }
+                    )
                 }
-                Spacer()
+                .frame(maxWidth: .infinity)
             }
         }
-        .frame(maxWidth: .infinity, maxHeight: 500)
     }
 }
 
 struct DayView_Previews: PreviewProvider {
     static var previews: some View {
         DayView()
-            .previewLayout(.sizeThatFits)
+        //            .previewLayout(.sizeThatFits)
     }
 }
