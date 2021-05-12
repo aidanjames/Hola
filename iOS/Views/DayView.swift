@@ -12,15 +12,32 @@ struct DayView: View {
     var body: some View {
         NavigationView {
             VStack {
-                
-                ScrollView {
+                    VStack {
+                        HStack {
+                            Text("March")
+                                .padding(.leading)
+                                .padding(.bottom, 5)
+                            Spacer()
+                        }
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack {
+                                ForEach(1..<32) { day in
+                                    Text("\(day)")
+                                        .padding(.horizontal)
+                                }
+                            }
+                        }
+                        .padding(.bottom, 15)
+                    }
+                ScrollView(showsIndicators: false) {
                     HStack {
                         VStack {
                             ForEach(0..<24) { hour in
                                 VStack {
                                     Text("\(hour):00 \(hour < 12 ? "am" : "pm")")
-                                    Text("|")
-                                    Text("|")
+                                    Rectangle()
+                                        .frame(width: 2, height: 50)
+                                        .foregroundColor(.gray)
                                 }
                                 .padding(.leading)
                             }
