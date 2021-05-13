@@ -33,13 +33,27 @@ struct DayView: View {
                     HStack {
                         VStack {
                             ForEach(0..<24) { hour in
-                                VStack {
-                                    Text("\(hour):00 \(hour < 12 ? "am" : "pm")")
-                                    Rectangle()
-                                        .frame(width: 2, height: 50)
-                                        .foregroundColor(.gray)
+                                HStack(alignment: .top) {
+                                    VStack {
+                                        Text("\(hour):00 \(hour < 12 ? "am" : "pm")")
+                                        Rectangle()
+                                            .frame(width: 2, height: 50)
+                                            .foregroundColor(.gray)
+                                    }
+                                    .padding(.horizontal)
+                                    VStack(alignment: .leading) {
+                                        Text("English").bold()
+                                        HStack {
+                                            Image(systemName: "mappin.and.ellipse")
+                                            Text("Room A12")
+                                        }.font(.caption)
+                                        HStack {
+                                            Image(systemName: "person.fill")
+                                            Text("Room A12")
+                                        }.font(.caption)
+                                    }
+                                    
                                 }
-                                .padding(.leading)
                             }
                         }
                         Spacer()
