@@ -14,6 +14,13 @@ struct Activity: Identifiable {
     var endTime: Date?
     var isActive: Bool { endTime != nil }
     
+    var wrappedEndTime: String {
+        if endTime != nil {
+            return "\(endTime!.friendlyDate())"
+        } else {
+            return "Still timing"
+        }
+    }
 }
 
 enum mockActivities {

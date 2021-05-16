@@ -20,4 +20,12 @@ extension Date {
     
     func add(seconds: Double = 5) -> Date { return self.addingTimeInterval(seconds) }
     
+    
+    func friendlyDate() -> String {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        
+        return formatter.string(from: self)
+    }
+    
 }
