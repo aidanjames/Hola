@@ -14,7 +14,7 @@ struct ActivityListView: View {
     var body: some View {
         LazyVStack {
             ForEach(activities) { activity in
-                Text(activity.description)
+                ActivityListViewCell(activity: activity)
             }
         }
         .onAppear {
