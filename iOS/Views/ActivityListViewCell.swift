@@ -17,11 +17,12 @@ struct ActivityListViewCell: View {
             Text(" Start: \(activity.startTime.friendlyDate())")
             Text("End: \(activity.wrappedEndTime)")
         }
+        .frame(height: 200)
     }
 }
 
 struct ActivityListViewCell_Previews: PreviewProvider {
     static var previews: some View {
-        ActivityListViewCell(activity: mockActivities.singleActivity)
+        ActivityListViewCell(activity: MockActivities.singleActivity)
     }
 }

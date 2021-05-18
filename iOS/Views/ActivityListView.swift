@@ -13,12 +13,14 @@ struct ActivityListView: View {
     
     var body: some View {
         LazyVStack {
-            ForEach(activities) { activity in
-                ActivityListViewCell(activity: activity)
+            ScrollView {
+                ForEach(activities) { activity in
+                    ActivityListViewCell(activity: activity)
+                }
             }
         }
         .onAppear {
-            activities = mockActivities.multipleActivities
+            activities = MockActivities.multipleActivities
         }
     }
 }

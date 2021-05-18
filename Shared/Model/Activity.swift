@@ -23,7 +23,7 @@ struct Activity: Identifiable {
     }
 }
 
-enum mockActivities {
+enum MockActivities {
     static let singleActivity = Activity(description: "My task", startTime: Date().add(seconds: -20000), endTime: Date().add(seconds: -10000))
     static let multipleActivities: [Activity] = [
         singleActivity,
