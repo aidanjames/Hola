@@ -18,6 +18,8 @@ struct ActivityListViewCell: View {
             Text("End: \(activity.wrappedEndTime)")
         }
         .frame(height: 200)
+        .frame(maxWidth: .infinity)
+        .background(RoundedRectangle(cornerRadius: 16).stroke(Color.gray, lineWidth: 1))
     }
 }
 

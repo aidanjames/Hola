@@ -12,7 +12,7 @@ struct FlashCardView: View {
     var flashCard: FlashCard
     
     @ObservedObject var viewModel: FlashCardsContainerViewModel
-//    @State private var showingFront = true
+    //    @State private var showingFront = true
     @State private var offset = CGSize.zero
     @State private var scale: CGFloat = 1.0
     var showingSpanish: Bool
@@ -21,23 +21,9 @@ struct FlashCardView: View {
     
     var body: some View {
         VStack {
-//            if showingFront {
-                Text(showingSpanish ? flashCard.es : flashCard.en)
-                    .font(.largeTitle)
-                    .padding(.bottom, 100)
-//            } else {
-//                Text(flashCard.en)
-//                    .font(.largeTitle)
-//                    .padding(.bottom, 100)
-//            }
-//            Button(action: { showingSpanish.toggle() }) {
-//                Text( ? "Translate" : "Show original")
-//                    .foregroundColor(.white)
-//                    .padding()
-//                    .background(Color.blue)
-//                    .cornerRadius(16)
-//            }
-//            .padding()
+            Text(showingSpanish ? flashCard.es : flashCard.en)
+                .font(.largeTitle)
+                .padding(.bottom, 100)
             Button(action: { viewModel.deleteCard(flashCard.id) } ) {
                 Image(systemName: "trash")
                     .foregroundColor(.red)
