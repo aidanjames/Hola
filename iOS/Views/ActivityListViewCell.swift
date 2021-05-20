@@ -12,7 +12,7 @@ struct ActivityListViewCell: View {
     var activity: Activity
     
     var body: some View {
-        VStack {
+        VStack(alignment: .leading) {
             Text(activity.description)
             Text(" Start: \(activity.startTime.friendlyDate())")
             Text("End: \(activity.wrappedEndTime)")
