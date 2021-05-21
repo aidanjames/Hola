@@ -14,8 +14,8 @@ struct ActivityListViewCell: View {
     var body: some View {
         VStack(alignment: .leading) {
             Text(activity.description)
-            Text(" Start: \(activity.startTime.friendlyDate())")
-            Text("End: \(activity.wrappedEndTime)")
+            Text("Start:  \(activity.startTime.friendlyDate())")
+            Text("End:    \(activity.wrappedEndTime)")
         }
         .frame(height: 200)
         .frame(maxWidth: .infinity)
