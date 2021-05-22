@@ -13,10 +13,10 @@ struct ActivityListViewCell: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text(activity.description)
+            Text(activity.description).font(.headline).bold()
             Text("Start:  \(activity.startTime.friendlyDate())")
             Text("End:    \(activity.wrappedEndTime)")
-        }
+        }.font(.callout)
         .frame(height: 200)
         .frame(maxWidth: .infinity)
         .background(RoundedRectangle(cornerRadius: 16).stroke(Color.gray, lineWidth: 1))
