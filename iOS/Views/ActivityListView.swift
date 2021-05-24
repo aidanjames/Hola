@@ -16,7 +16,8 @@ struct ActivityListView: View {
             ScrollView {
                 ForEach(activities) { activity in
                     ActivityListViewCell(activity: activity)
-                        .padding()
+                        .padding(.bottom)
+                        .padding(.horizontal)
                 }
             }
         }
