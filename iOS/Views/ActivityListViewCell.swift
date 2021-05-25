@@ -19,6 +19,7 @@ struct ActivityListViewCell: View {
                         .font(.headline)
                         .bold()
                         .padding(.bottom, 5)
+                        .lineLimit(1)
                     Text("Start:  \(activity.startTime.friendlyDate())")
                     Text("End:    \(activity.wrappedEndTime)")
                 }
@@ -27,7 +28,7 @@ struct ActivityListViewCell: View {
             }
             
         }.font(.callout)
-        .frame(height: 150)
+//        .frame(height: 150)
         .frame(maxWidth: .infinity)
         .background(RoundedRectangle(cornerRadius: 16).stroke(Color.gray, lineWidth: 1))
     }

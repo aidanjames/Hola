@@ -24,7 +24,7 @@ struct Activity: Identifiable {
 }
 
 enum MockActivities {
-    static let singleActivity = Activity(description: "My task", startTime: Date().add(seconds: -20000), endTime: Date().add(seconds: -10000))
+    static let singleActivity = Activity(description: "My task that I just made that would take up more than one line OK?", startTime: Date().add(seconds: -20000), endTime: Date().add(seconds: -10000))
     static let multipleActivities: [Activity] = [
         singleActivity,
         Activity(description: "Another task", startTime: Date().add(seconds: -8000), endTime: Date().add(seconds: -7000))
