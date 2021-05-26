@@ -12,17 +12,24 @@ struct ActivityListView: View {
     @State private var activities: [Activity] = []
     
     var body: some View {
-        LazyVStack {
-            ScrollView {
-                ForEach(activities) { activity in
-                    ActivityListViewCell(activity: activity)
-                        .padding(.bottom)
-                        .padding(.horizontal)
+        NavigationView {
+            VStack {
+                ScrollView {
+                    ForEach(activities) { activity in
+                        ActivityListViewCell(activity: activity)
+                            .padding(.bottom)
+                            .padding(.horizontal)
+                    }
                 }
+                .frame(maxHeight: .infinity)
+                .background(Color.blue)
             }
-        }
-        .onAppear {
-            activities = MockActivities.multipleActivities
+
+            .background(Color.secondary)
+            .navigationTitle("Activities")
+            .onAppear {
+                activities = MockActivities.multipleActivities
+            }
         }
     }
 }
