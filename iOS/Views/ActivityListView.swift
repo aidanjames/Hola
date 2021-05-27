@@ -13,19 +13,17 @@ struct ActivityListView: View {
     
     var body: some View {
         NavigationView {
-            VStack {
-                ScrollView {
+            ScrollView {
+                
+                LazyVStack {
                     ForEach(activities) { activity in
                         ActivityListViewCell(activity: activity)
-                            .padding(.bottom)
+                            .padding(.bottom, 2)
                             .padding(.horizontal)
                     }
                 }
-                .frame(maxHeight: .infinity)
-                .background(Color.blue)
             }
-
-            .background(Color.secondary)
+            .ignoresSafeArea(edges: .bottom)
             .navigationTitle("Activities")
             .onAppear {
                 activities = MockActivities.multipleActivities
