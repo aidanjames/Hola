@@ -9,14 +9,13 @@ import SwiftUI
 
 struct ActivityListView: View {
     
-    @State private var activities: [Activity] = []
+    @StateObject var viewModel = ActivityListViewModel()
     
     var body: some View {
         NavigationView {
             ScrollView {
-                
                 LazyVStack {
-                    ForEach(activities) { activity in
+                    ForEach(viewModel.activities) { activity in
                         ActivityListViewCell(activity: activity)
                             .padding(.bottom, 2)
                             .padding(.horizontal)
@@ -25,9 +24,7 @@ struct ActivityListView: View {
             }
             .ignoresSafeArea(edges: .bottom)
             .navigationTitle("Activities")
-            .onAppear {
-                activities = MockActivities.multipleActivities
-            }
+            .onAppear { viewModel.fetchActivities() }
         }
     }
 }

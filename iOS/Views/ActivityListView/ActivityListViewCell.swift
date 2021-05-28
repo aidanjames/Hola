@@ -28,7 +28,6 @@ struct ActivityListViewCell: View {
             }
             
         }.font(.callout)
-//        .frame(height: 150)
         .frame(maxWidth: .infinity)
         .background(RoundedRectangle(cornerRadius: 16).stroke(Color.gray, lineWidth: 1))
     }
