@@ -21,7 +21,9 @@ struct ActivityListViewCell: View {
                         .padding(.bottom, 5)
                         .lineLimit(1)
                     Text("Start:  \(activity.startTime.friendlyDate())")
+                        .foregroundColor(.secondary)
                     Text("End:    \(activity.wrappedEndTime)")
+                        .foregroundColor(.secondary)
                 }
                 .padding()
                 Spacer()
