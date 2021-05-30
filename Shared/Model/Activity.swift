@@ -21,6 +21,11 @@ struct Activity: Identifiable {
             return "Still timing"
         }
     }
+    
+    var totalTimeInSeconds: TimeInterval {
+        guard endTime != nil else { return Date() - startTime }
+        return endTime! - startTime
+    }
 }
 
 enum MockActivities {

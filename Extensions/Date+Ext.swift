@@ -11,7 +11,7 @@ extension Date {
     
     func tomorrow() -> Date {
         let now = Calendar.current.dateComponents(in: .current, from: self)
-
+        
         // Add 1 to the day to get tomorrow.
         let tomorrow = DateComponents(year: now.year, month: now.month, day: now.day! + 1)
         return Calendar.current.date(from: tomorrow)!
@@ -27,6 +27,10 @@ extension Date {
         formatter.timeStyle = .medium
         
         return formatter.string(from: self)
+    }
+    
+    static func - (lhs: Date, rhs: Date) -> TimeInterval {
+        return lhs.timeIntervalSinceReferenceDate - rhs.timeIntervalSinceReferenceDate
     }
     
 }
