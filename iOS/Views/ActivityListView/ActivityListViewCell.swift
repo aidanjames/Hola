@@ -24,6 +24,8 @@ struct ActivityListViewCell: View {
                         .foregroundColor(.secondary)
                     Text("End:    \(activity.wrappedEndTime)")
                         .foregroundColor(.secondary)
+                    Text("Total:  \(Int(activity.totalTimeInSeconds)) seconds")
+                        .foregroundColor(.secondary)
                 }
                 .padding()
                 Spacer()
