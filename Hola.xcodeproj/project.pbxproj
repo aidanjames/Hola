@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D1D7F5F26668ED100296AE3 /* TimeInterval+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1D7F5E26668ED100296AE3 /* TimeInterval+Ext.swift */; };
 		3D2EF60F25A8CFBD0068890D /* Hola.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3D2EF5F925A8CFBD0068890D /* Hola.xcdatamodeld */; };
 		3D2EF61025A8CFBD0068890D /* Hola.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3D2EF5F925A8CFBD0068890D /* Hola.xcdatamodeld */; };
 		3D2EF61125A8CFBD0068890D /* HolaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2EF5FB25A8CFBD0068890D /* HolaApp.swift */; };
@@ -51,6 +52,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3D1D7F5E26668ED100296AE3 /* TimeInterval+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+Ext.swift"; sourceTree = "<group>"; };
 		3D2EF5FA25A8CFBD0068890D /* Shared.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Shared.xcdatamodel; sourceTree = "<group>"; };
 		3D2EF5FB25A8CFBD0068890D /* HolaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolaApp.swift; sourceTree = "<group>"; };
 		3D2EF5FC25A8CFBD0068890D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 				3D988C712625F7A80093F4B8 /* FileManager+Ext.swift */,
 				3D4715CD262C2CD9001084AB /* View+Ext.swift */,
 				3D6C626C2634794100A6D1A1 /* Date+Ext.swift */,
+				3D1D7F5E26668ED100296AE3 /* TimeInterval+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -325,6 +328,7 @@
 				3D2EF61125A8CFBD0068890D /* HolaApp.swift in Sources */,
 				3DEE91F42616436F00351A09 /* ParagraphTabView.swift in Sources */,
 				3DEE920026164C7500351A09 /* StoriesListView.swift in Sources */,
+				3D1D7F5F26668ED100296AE3 /* TimeInterval+Ext.swift in Sources */,
 				3D988C722625F7A80093F4B8 /* FileManager+Ext.swift in Sources */,
 				3DD152F125A9A588001A7539 /* NetworkingManager.swift in Sources */,
 				3D81FDF42650356D0046FE01 /* ActivityListView.swift in Sources */,
