@@ -7,9 +7,14 @@
 
 import Foundation
 
+struct ActivityError: Identifiable {
+    var id = UUID()
+    var text: String
+}
+
 final class ActivityListViewModel: ObservableObject {
     @Published var activities: [Activity] = []
-    @Published var error: String? = nil
+    @Published var error: ActivityError? = nil
     
     
     func fetchActivities() {
@@ -26,7 +31,7 @@ final class ActivityListViewModel: ObservableObject {
             activities.remove(at: index)
             saveActivities()
         } else {
-            error = "Couldn't find activity to delete"
+            error = ActivityError(text: "Couldn't find activity to delete")
         }
     }
     
@@ -36,7 +41,7 @@ final class ActivityListViewModel: ObservableObject {
             activities[index] = activity
             saveActivities()
         } else {
-            error = "Couldn't find activity to update"
+            error = ActivityError(text: "Couldn't find activity to update")
         }
     }
     

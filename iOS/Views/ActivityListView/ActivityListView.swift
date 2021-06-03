@@ -25,6 +25,14 @@ struct ActivityListView: View {
             .ignoresSafeArea(edges: .bottom)
             .navigationTitle("Activities")
             .onAppear { viewModel.fetchActivities() }
+            .alert(item: $viewModel.error) { error in
+                Alert(title: Text("Error"), message: Text(error.text), dismissButton: .cancel())
+            }
+            .navigationBarItems(trailing:
+                                    Button("Show alert") {
+                                        viewModel.error = ActivityError(text: "This is an error")
+                                    }
+            )
         }
     }
 }
