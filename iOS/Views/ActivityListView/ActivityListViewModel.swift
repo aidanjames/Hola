@@ -15,6 +15,7 @@ struct ActivityError: Identifiable {
 final class ActivityListViewModel: ObservableObject {
     @Published var activities: [Activity] = []
     @Published var error: ActivityError? = nil
+    @Published var activityBeingEdited: UUID? = nil
     
     
     func fetchActivities() {
