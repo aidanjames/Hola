@@ -9,7 +9,8 @@ import SwiftUI
 
 struct EditActivityView: View {
     
-    var activity: Activity
+    var activityID: UUID
+    var viewModel: EditActivityViewModel
     
     var body: some View {
         Text(activity.description)
