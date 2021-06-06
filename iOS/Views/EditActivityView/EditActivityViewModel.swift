@@ -13,7 +13,7 @@ class EditActivityViewModel: ObservableObject {
     @Published var description: String
     @Published var startTime: Date
     @Published var endTime: Date
-    @Publisehd var error: ActivityError?
+    @Published var error: ActivityError?
     
     init(id: UUID) {
         // Fetch saved activities

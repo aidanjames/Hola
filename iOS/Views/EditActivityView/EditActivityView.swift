@@ -13,12 +13,12 @@ struct EditActivityView: View {
     var viewModel: EditActivityViewModel
     
     var body: some View {
-        Text(activity.description)
+        Text(viewModel.activityToEdit.description)
     }
 }
 
 struct EditActivityView_Previews: PreviewProvider {
     static var previews: some View {
-        EditActivityView(activity: MockActivities.singleActivity)
+        EditActivityView(activityID: MockActivities.singleActivity.id, viewModel: EditActivityViewModel(id: UUID()))
     }
 }
