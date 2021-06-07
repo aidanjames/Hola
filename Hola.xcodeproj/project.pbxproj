@@ -39,8 +39,6 @@
 		3DD152F125A9A588001A7539 /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD152F025A9A588001A7539 /* NetworkingManager.swift */; };
 		3DD152F525A9A873001A7539 /* translation.json in Resources */ = {isa = PBXBuildFile; fileRef = 3DD152F425A9A873001A7539 /* translation.json */; };
 		3DD152FA25A9A8DE001A7539 /* Bundle+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD152F925A9A8DE001A7539 /* Bundle+Ext.swift */; };
-		3DE891BA266B9E5F006ABAEC /* EditActivityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE891B9266B9E5F006ABAEC /* EditActivityViewModel.swift */; };
-		3DE891BB266B9E5F006ABAEC /* EditActivityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE891B9266B9E5F006ABAEC /* EditActivityViewModel.swift */; };
 		3DEE91EF2616402D00351A09 /* ParagraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEE91EE2616402D00351A09 /* ParagraphView.swift */; };
 		3DEE91F02616402D00351A09 /* ParagraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEE91EE2616402D00351A09 /* ParagraphView.swift */; };
 		3DEE91F42616436F00351A09 /* ParagraphTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEE91F32616436F00351A09 /* ParagraphTabView.swift */; };
@@ -83,7 +81,6 @@
 		3DD152F025A9A588001A7539 /* NetworkingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
 		3DD152F425A9A873001A7539 /* translation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = translation.json; sourceTree = "<group>"; };
 		3DD152F925A9A8DE001A7539 /* Bundle+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Ext.swift"; sourceTree = "<group>"; };
-		3DE891B9266B9E5F006ABAEC /* EditActivityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditActivityViewModel.swift; sourceTree = "<group>"; };
 		3DEE91EE2616402D00351A09 /* ParagraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParagraphView.swift; sourceTree = "<group>"; };
 		3DEE91F32616436F00351A09 /* ParagraphTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParagraphTabView.swift; sourceTree = "<group>"; };
 		3DEE91FA26164BE500351A09 /* WrapperTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrapperTabView.swift; sourceTree = "<group>"; };
@@ -216,7 +213,6 @@
 			isa = PBXGroup;
 			children = (
 				3D435102266AAE5D000B97B6 /* EditActivityView.swift */,
-				3DE891B9266B9E5F006ABAEC /* EditActivityViewModel.swift */,
 			);
 			path = EditActivityView;
 			sourceTree = "<group>";
@@ -344,7 +340,6 @@
 				3D2EF61125A8CFBD0068890D /* HolaApp.swift in Sources */,
 				3DEE91F42616436F00351A09 /* ParagraphTabView.swift in Sources */,
 				3D435103266AAE5D000B97B6 /* EditActivityView.swift in Sources */,
-				3DE891BA266B9E5F006ABAEC /* EditActivityViewModel.swift in Sources */,
 				3DEE920026164C7500351A09 /* StoriesListView.swift in Sources */,
 				3D1D7F5F26668ED100296AE3 /* TimeInterval+Ext.swift in Sources */,
 				3D988C722625F7A80093F4B8 /* FileManager+Ext.swift in Sources */,
@@ -375,7 +370,6 @@
 				3DFCEAEF2649A3890045C6F2 /* DayView.swift in Sources */,
 				3DEE91F02616402D00351A09 /* ParagraphView.swift in Sources */,
 				3DF56EA8261F700B00B1849E /* FlashCardsContainerView.swift in Sources */,
-				3DE891BB266B9E5F006ABAEC /* EditActivityViewModel.swift in Sources */,
 				3D3177CE2620AEDB00619F67 /* FlashCardView.swift in Sources */,
 				3D81FDF52650356D0046FE01 /* ActivityListView.swift in Sources */,
 				3DEE91FC26164BE500351A09 /* WrapperTabView.swift in Sources */,

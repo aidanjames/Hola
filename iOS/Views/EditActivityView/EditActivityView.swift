@@ -9,16 +9,15 @@ import SwiftUI
 
 struct EditActivityView: View {
     
-    var activityID: UUID
-    var viewModel: EditActivityViewModel
+    @Binding var activityToEdit: Activity
     
     var body: some View {
-        Text(viewModel.activityToEdit.description)
+        Text(activityToEdit.description)
     }
 }
 
 struct EditActivityView_Previews: PreviewProvider {
     static var previews: some View {
-        EditActivityView(activityID: MockActivities.singleActivity.id, viewModel: EditActivityViewModel(id: UUID()))
+        EditActivityView(activityToEdit: .constant(MockActivities.singleActivity))
     }
 }
