@@ -29,6 +29,10 @@ struct ActivityListViewCell: View {
                 }
                 .padding()
                 Spacer()
+                Button("Edit") {
+                    // To do
+                }
+                .padding()
             }
             
         }.font(.callout)
